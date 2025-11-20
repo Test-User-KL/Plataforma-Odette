@@ -2,11 +2,11 @@ import "./App.css";
 
 export default function App() {
   return (
-    <footer>
+    <header>
+      <button id="new-tab"><i className="fas fa-plus"></i></button>
       <nav>
-        <button>Início</button>
-        <button>Disciplinas</button>
+        
       </nav>
-    </footer>
+    </header>
   );
 }
