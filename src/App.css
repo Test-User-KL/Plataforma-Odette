@@ -38,9 +38,10 @@
 	--button-bd-color: var(--tgray5);
 	--button-br: 0.5rem;
 
-	/* Footer */
-	--header-bg-color: var(--emphasis);
-	--header-bd-color: var(--tgray5);
+	/* Header */
+	--header-bg-color: var(--gray4);
+	--header-button-bg-primary-color: var(--gray1);
+	--header-button-bg-secondary-color: var(--gray6);
 
 	--fc: rgb(0, 0, 0);
 
@@ -48,8 +49,21 @@
 	--default-fs: 0.9rem;
 	--default-bs: 0 0 1rem rgba(0, 0, 0, 0.25);
 	--border-width: 1px;
-	--default--bg-transition: background-color 0.3s ease-in-out;
+	--default-bg-transition: background-color 0.3s ease-in-out;
+	--default-height-transition: height 0.3s ease-in-out;
 }
+
+h1, h2 {
+	font-family: 'Inter Tight', 'sans-serif';
+	line-height: 1;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 2rem; }
+h4 { font-size: 1.75rem; }
+h5 { font-size: 1.5rem; }
+h6 { font-size: 1.25rem; }
 
 :where(button, .btn) {
 	display: flex;
@@ -60,7 +74,7 @@
 	background: var(--button-bg-primary-color);
 	border: var(--border-width) solid var(--button-bd-color);
 	border-radius: var(--button-br);
-	transition: var(--default--bg-transition);
+	transition: var(--default-bg-transition);
 	cursor: pointer;
 	color: var(--fc);
 	font-size: var(--default-fs);
@@ -87,14 +101,13 @@ header {
 	align-items: center;
 	padding-left: 0.5rem;
 	height: 2.75rem;
-	gap: 0.3rem;
+	gap: 0.5rem;
 	background: var(--header-bg-color);
 }
 
-header button {
-	background: var(--light);
+header :is(#new-tab, .tab-button.active-tab) {
+	background: var(--header-button-bg-primary-color);
 	border: none;
-	color: white;
 }
 
 header #new-tab {
@@ -103,6 +116,7 @@ header #new-tab {
 	width: 1.75rem;
 	border-radius: var(--button-br);
 	font-size: 0.6rem;
+	flex-shrink: 0;
 }
 
 header nav {
@@ -110,12 +124,54 @@ header nav {
 	flex-direction: row;
 	align-items: end;
 	height: 100%;
+	width: 100%;
+	gap: 0.125rem;
+	overflow-x: auto;
+}
+
+header nav::-webkit-scrollbar {
+	display: none;
 }
 
 header nav .tab-button {
 	display: flex;
+	align-items: center;
+	justify-content: space-between;
 	flex-direction: row;
 	width: 10rem;
+	height: 1.75rem;
+	margin-bottom: 0.5rem;
+	padding: 0.5rem 0.75rem;
+	border-radius: var(--button-br);
+	flex-shrink: 0;
+	cursor: pointer;
+}
+
+header nav .tab-button:hover {
+	background: var(--header-button-bg-secondary-color);
+	transition: var(--default-bg-transition);
+}
+
+header nav .tab-button.active-tab {
 	height: 2.25rem;
+	margin-bottom: 0;
 	border-radius: var(--button-br) var(--button-br) 0 0;
+}
+
+header nav .tab-button .tab-title {
+	font-size: 0.95rem;
+}
+
+.tab-separator {
+	display: flex;
+	width: 2px;
+	height: 1.75rem;
+	background: var(--gray5);
+	z-index: 9998;
+	transform: translateY(-0.5rem);
+	flex-shrink: 0;
+}  
+
+main {
+	padding: 2rem;
 }
