@@ -77,13 +77,13 @@ export default function App() {
 
 	const activeTab = tabs.find((t) => t.id === activeTabId);
 
-	function renderActiveTabContent(tab: Tab) {
+	function renderActiveTabContent() {
 		return (
-		<div className="new-tab-page">
-			<section className="my-week">
+		<div className="new-tab-page animate-fade-in">
+			<section className="my-week animate-fade-in">
 				<h1>Sua Semana</h1>
 				<div className="current-previous-next-class">
-					<div className="current-class fade-up">
+					<div className="current-class animate-fade-in">
 						<p>Aula em Andamento - Disciplina:</p>
 						<h2>Tema da Aula</h2>
 						<div className="files">
@@ -109,7 +109,7 @@ export default function App() {
 				<h2>Todas as Aulas</h2>
 			</section>
 
-			<section className="tasks">
+			<section className="tasks animate-fade-in">
 				<h1>Suas Tarefas</h1>
 				<p>lorem100</p>
 			</section>
@@ -174,7 +174,7 @@ export default function App() {
 			</header>
 
 			<main className="tab-content">
-				{activeTab && renderActiveTabContent(activeTab)}
+				{activeTab && renderActiveTabContent()}
 			</main>
 		</>
 	);
