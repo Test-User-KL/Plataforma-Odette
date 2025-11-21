@@ -8,11 +8,8 @@
 
 :root {
 	/* Paleta de Cores */
-	--extralight-emphasis: rgb(185, 200, 255);
-	--light-emphasis: rgb(50, 70, 250);
-	--emphasis: rgb(0, 30, 200);
-	--dark-emphasis: rgb(0, 30, 160);
-	--extradark-emphasis: rgb(0, 10, 60);
+	--primary-emphasis: rgb(0, 30, 200);
+	--secondary-emphasis: rgb(250, 140, 20);
 
 	--gray1: rgb(245, 245, 250);
 	--gray2: rgb(235, 235, 240);
@@ -29,7 +26,9 @@
 	--tgray6: rgba(195, 195, 200, 0.8);
 
 	--light: rgba(255, 255, 255, 0.3);
-	--shadow: rgba(0, 0, 0, 0.3);
+	--shadow: rgba(0, 0, 0, 0.15);
+
+	--white: rgb(250, 250, 255);
 
 	/* Body */
 	--body-bg-color: var(--gray1);
@@ -37,12 +36,12 @@
 	/* Botões */
 	--button-bg-primary-color: var(--tgray1);
 	--button-bg-secondary-color: var(--tgray3);
-	--button-bg-tertiary-color: var(--light-emphasis);
+	--button-bg-tertiary-color: var(--primary-emphasis);
 	--button-bd-color: var(--tgray5);
 	--button-br: 0.5rem;
 
 	/* Header */
-	--header-bg-color: var(--emphasis);
+	--header-bg-color: var(--primary-emphasis);
 	--header-button-bg-color: var(--gray1);
 
 	--fc: rgb(0, 0, 0);
@@ -59,6 +58,7 @@
 	--default-height-transition: height 0.3s ease-in-out;
 }
 
+/* Geral */
 h1, h2 {
 	font-family: 'Inter Tight', 'sans-serif';
 }
@@ -93,7 +93,7 @@ h6 { font-size: 1.25rem; }
 :where(button, .btn).active {
 	background: var(--button-bg-tertiary-color);
 	border: var(--border-width) solid var(--button-bg-tertiary-color);
-	color: white;
+	color: var(--white);
 }
 
 hr {
@@ -108,6 +108,32 @@ body {
 	overflow: hidden;
 }
 
+/* Keyframes */
+.reveal {
+	opacity: 0;
+	transform: translateY(1rem);
+	transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+  
+.reveal.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Media Queries */
+@media (min-width: 769px) {
+	main {
+		padding: 0 5rem 2rem 5rem;
+	}
+}
+
+@media (max-width: 768px) {
+	main {
+		padding: 0 2rem 2rem 2rem;
+	}
+}
+  
+/* Header */
 header {
 	display: flex;
 	flex-direction: row;
@@ -117,6 +143,8 @@ header {
 	height: 2.75rem;
 	width: 100%;
 	gap: 0.5rem;
+	top: 0;
+	left: 0;
 	background: var(--header-bg-color);
 }
 
@@ -133,7 +161,7 @@ header #new-tab {
 	flex-shrink: 0;
 	box-shadow: var(--light-bs);
 	background: var(--light);
-	color: white;
+	color: var(--white);
 }
 
 header nav {
@@ -162,7 +190,7 @@ header nav .tab-button {
 	border-radius: var(--button-br) var(--button-br) 0 0;
 	flex-shrink: 0;
 	cursor: pointer;
-	color: white;
+	color: var(--white);
 	transition: var(--default-color-transition), var(--default-size-transition), var(--default-spaces-transition);
 }
 
@@ -207,9 +235,9 @@ header nav .tab-button .tab-title {
 	flex-direction: column;
 	align-items: start;
 	padding: 1.75rem;
-	background: var(--emphasis);
+	background: var(--primary-emphasis);
 	border-radius: 1.25rem;	
-	color: white;
+	color: var(--white);
 }
 
 .my-week .current-previous-next-class .current-class .files {
@@ -226,21 +254,21 @@ header nav .tab-button .tab-title {
 	align-items: center;
 	justify-content: center;
 	padding: 1rem;
-	background: var(--extralight-emphasis);
+	background: var(--shadow);
 	border-radius: 1.25rem;
 }
 
+/* Main */
 main {
-	padding-top: 4.75rem;
+	overflow-x: hidden;
+	overflow-y: auto;
+	margin-top: 4.75rem;
+	max-height: calc(100vh - 4.75rem);
 }
 
-main > div {
+main section {
 	display: flex;
 	flex-direction: column;
-	padding: 2rem;
-	padding-top: 0;
 	gap: 1rem;
-	height: calc(100vh - 4.75rem);
-	overflow-y: auto;
 }
 
