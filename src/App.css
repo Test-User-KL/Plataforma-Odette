@@ -133,19 +133,6 @@ body {
 	animation: fade-in-up 0.6s ease-out both;
 	animation-delay: calc(var(--fade-order, 0) * 0.1s);
 }
-
-/* Media Queries */
-@media (min-width: 769px) {
-	main {
-		padding: 0 5rem 2rem 5rem;
-	}
-}
-
-@media (max-width: 768px) {
-	main {
-		padding: 0 2rem 2rem 2rem;
-	}
-}
   
 /* Header */
 header {
@@ -227,7 +214,7 @@ header nav .tab-button .tab-title {
 	z-index: 9998;
 	transform: translateY(-0.5rem);
 	flex-shrink: 0;
-}  
+} 
 
 .my-week .current-previous-next-class {
 	display: grid;
@@ -278,12 +265,32 @@ main {
 	overflow-y: auto;
 	margin-top: 4.75rem;
 	max-height: calc(100vh - 4.75rem);
+	--s: 28px;       
+    --w: 1px;     
+    background-color: var(--gray1);
+    background-image:
+      repeating-linear-gradient(
+        to bottom,
+        var(--gray4) 0 var(--w),
+        transparent var(--w) var(--s)
+      ),
+      repeating-linear-gradient(
+        to right,
+        var(--gray4) 0 var(--w),
+        transparent var(--w) var(--s)
+      );
+    background-size: var(--s) var(--s);
+}
+
+main div:first-child {
+	padding-top: 3rem;
 }
 
 main section {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+	padding: 0 5rem;
 }
 
 /* Footer */
