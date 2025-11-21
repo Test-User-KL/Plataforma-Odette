@@ -123,6 +123,7 @@ body {
 
 .animate-fade-in {
 	animation: fade-in-up 0.6s ease-out both;
+	animation-delay: calc(var(--fade-order, 0) * 0.1s);
 }
 
 /* Media Queries */

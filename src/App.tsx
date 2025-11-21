@@ -79,26 +79,42 @@ export default function App() {
 
 	function renderActiveTabContent() {
 		return (
-		<div className="new-tab-page animate-fade-in">
-			<section className="my-week animate-fade-in">
+		<div
+			key={activeTabId}
+			className="new-tab-page animate-fade-in"
+			style={{ "--fade-order": 0 } as React.CSSProperties}
+		>
+			<section
+				className="my-week animate-fade-in"
+				style={{ "--fade-order": 1 } as React.CSSProperties}
+			>
 				<h1>Sua Semana</h1>
 				<div className="current-previous-next-class">
-					<div className="current-class animate-fade-in">
-						<p>Aula em Andamento - Disciplina:</p>
-						<h2>Tema da Aula</h2>
-						<div className="files">
-							<div className="file">
+						<div
+							className="current-class animate-fade-in"
+							style={{ "--fade-order": 2 } as React.CSSProperties}
+						>
+								<p>Aula em Andamento - Disciplina:</p>
+								<h2>Tema da Aula</h2>
+								<div className="files">
+									<div className="file">
 								<i className={'fa-regular fa-file'}></i>
 								<p>Arquivo</p>
 							</div>
 							Esta aula não possui anexos.
 						</div>
 					</div>
-					<div className="previous-class">
+					<div 
+						className="previous-class"
+						style={{ "--fade-order": 3 } as React.CSSProperties}
+					>
 						<p>Aula Anterior:</p>
 						<h5>Disciplina</h5>
 					</div>
-					<div className="next-class">
+					<div 
+					className="next-class"
+						style={{ "--fade-order": 4 } as React.CSSProperties}
+					>
 						<p>Próxima Aula:</p>
 						<h5>Disciplina</h5>
 					</div>
@@ -109,7 +125,10 @@ export default function App() {
 				<h2>Todas as Aulas</h2>
 			</section>
 
-			<section className="tasks animate-fade-in">
+			<section 
+				className="tasks animate-fade-in"
+				style={{ "--fade-order": 5 } as React.CSSProperties}
+			>
 				<h1>Suas Tarefas</h1>
 				<p>lorem100</p>
 			</section>
