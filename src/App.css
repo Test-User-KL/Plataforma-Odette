@@ -39,9 +39,8 @@
 	--button-br: 0.5rem;
 
 	/* Header */
-	--header-bg-color: var(--gray4);
-	--header-button-bg-primary-color: var(--gray1);
-	--header-button-bg-secondary-color: var(--gray6);
+	--header-bg-color: var(--emphasis);
+	--header-button-bg-color: var(--gray1);
 
 	--fc: rgb(0, 0, 0);
 
@@ -50,7 +49,9 @@
 	--light-bs: 0 0 0.5rem rgba(0, 0, 0, 0.125);
 	--default-bs: 0 0 1rem rgba(0, 0, 0, 0.25);
 	--border-width: 1px;
-	--default-bg-transition: background-color 0.3s ease-in-out;
+	--default-color-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+	--default-size-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, scale 0.3s ease-in-out, transform 0.3s ease-in-out;
+	--default-spaces-transition: margin 0.3s ease-in-out, padding 0.3s ease-in-out, gap 0.3s ease-in-out;
 	--default-height-transition: height 0.3s ease-in-out;
 }
 
@@ -75,7 +76,7 @@ h6 { font-size: 1.25rem; }
 	background: var(--button-bg-primary-color);
 	border: var(--border-width) solid var(--button-bd-color);
 	border-radius: var(--button-br);
-	transition: var(--default-bg-transition);
+	transition: var(--default-color-transition);
 	cursor: pointer;
 	color: var(--fc);
 	font-size: var(--default-fs);
@@ -107,7 +108,6 @@ header {
 }
 
 header :is(#new-tab, .tab-button.active-tab) {
-	background: var(--header-button-bg-primary-color);
 	border: none;
 }
 
@@ -119,6 +119,8 @@ header #new-tab {
 	font-size: 0.6rem;
 	flex-shrink: 0;
 	box-shadow: var(--light-bs);
+	background: var(--light);
+	color: white;
 }
 
 header nav {
@@ -141,24 +143,21 @@ header nav .tab-button {
 	justify-content: space-between;
 	flex-direction: row;
 	width: 10rem;
-	height: 1.75rem;
-	margin-bottom: 0.5rem;
+	height: 2.25rem;
 	padding: 0.5rem 0.75rem;
-	border-radius: var(--button-br);
+	padding-bottom: 1rem;
+	border-radius: var(--button-br) var(--button-br) 0 0;
 	flex-shrink: 0;
 	cursor: pointer;
-}
-
-header nav .tab-button:hover {
-	background: var(--header-button-bg-secondary-color);
-	transition: var(--default-bg-transition);
+	color: white;
+	transition: var(--default-color-transition), var(--default-size-transition), var(--default-spaces-transition);
 }
 
 header nav .tab-button.active-tab {
-	height: 2.25rem;
-	margin-bottom: 0;
-	border-radius: var(--button-br) var(--button-br) 0 0;
+	background: var(--header-button-bg-color);
+	padding-bottom: 0.5rem;
 	box-shadow: var(--light-bs);
+	color: var(--fc);
 }
 
 header nav .tab-button .tab-title {
@@ -169,7 +168,7 @@ header nav .tab-button .tab-title {
 	display: flex;
 	width: 2px;
 	height: 1.75rem;
-	background: var(--gray5);
+	background: var(--light);
 	z-index: 9998;
 	transform: translateY(-0.5rem);
 	flex-shrink: 0;
