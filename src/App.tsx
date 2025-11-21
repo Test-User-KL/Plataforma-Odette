@@ -108,6 +108,15 @@ export default function App() {
 							<i className="fa-solid fa-graduation-cap"></i>
 							Disciplinas
 						</a>
+
+						<span className="separator"></span>
+
+						<a href="#settings">
+							<i className="fa-solid fa-gear"></i>
+						</a>
+						<a href="#account">
+							<i className="fa-solid fa-user"></i>
+						</a>
 					</nav>
 				</footer>
 
@@ -190,7 +199,7 @@ export default function App() {
 				<button
 					id="new-tab"
 					onClick={handleNewTab}
-					className="new-tab-button"
+					className="new-tab-button special"
 					title="Nova aba"
 				>
 					<i className="fa-solid fa-plus"></i>

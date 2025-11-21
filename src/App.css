@@ -26,7 +26,7 @@
 	--tgray5: rgba(205, 205, 210, 0.8);
 	--tgray6: rgba(195, 195, 200, 0.8);
 
-	--light: rgba(255, 255, 255, 0.3);
+	--light: rgba(255, 255, 255, 0.15);
 	--shadow: rgba(0, 0, 0, 0.15);
 
 	--white: rgb(250, 250, 255);
@@ -43,8 +43,13 @@
 	--button-br: 0.5rem;
 
 	/* Header */
+	--header-height: 2.75rem;
+	--header-spaces: 0.5rem;
 	--header-bg-color: var(--primary-emphasis);
 	--header-button-bg-color: var(--gray1);
+	--header-nav-gap: 0.125rem;
+	--header-nav-tabs-width: 10rem;
+	--header-nav-tabs-height: 2.25rem;
 
 	/* Footer */
 	--footer-nav-bg-color: var(--primary-emphasis);
@@ -54,6 +59,9 @@
 	--current-class-list-button-bg: var(--gray1);
 	--current-class-list-button-hover-bg: var(--gray3);
 
+	/* Outros */
+	--header-footer-z-index: 9998;
+
 	/* Geral */ 
 	--default-fs: 0.9rem;
 	--fc: rgb(0, 0, 0);
@@ -61,6 +69,7 @@
 	--default-bs: 0 0 1rem rgba(0, 0, 0, 0.25);
 	--border-color: var(--gray6);
 	--border-width: 1px;
+	--separator-width: 2px;
 	--default-color-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 	--default-size-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, scale 0.3s ease-in-out, transform 0.3s ease-in-out;
 	--default-spaces-transition: margin 0.3s ease-in-out, padding 0.3s ease-in-out, gap 0.3s ease-in-out;
@@ -118,7 +127,7 @@ h6 { font-size: 1.25rem; }
 hr {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
-	border: 0.1rem solid var(--border-color);
+	border: var(--border-width) solid var(--border-color);
 	border-radius: 0.1rem;
 }
 
@@ -210,21 +219,21 @@ header {
 	flex-direction: row;
 	align-items: center;
 	position: fixed;
-	padding-left: 0.5rem;
-	height: 2.75rem;
+	padding-left: var(--header-spaces);
+	height: var(--header-height);
 	width: 100%;
-	gap: 0.5rem;
+	gap: var(--header-spaces);
 	top: 0;
 	left: 0;
 	background: var(--header-bg-color);
-	z-index: 9998;
+	z-index: var(--header-footer-z-index);
 }
 
 header::after {
 	content: '';
 	width: 100%;
 	height: 2rem;
-	top: 4.75rem;
+	top: calc(var(--header-height) + 2rem);
 	left: 0;
 	position: fixed;
 	background: linear-gradient(
@@ -247,7 +256,6 @@ header #new-tab {
 	font-size: 0.6rem;
 	flex-shrink: 0;
 	box-shadow: var(--light-bs);
-	background: var(--light);
 	color: var(--white);
 }
 
@@ -257,7 +265,7 @@ header nav {
 	align-items: end;
 	height: 100%;
 	width: 100%;
-	gap: 0.125rem;
+	gap: var(--header-nav-gap);
 	overflow-x: auto;
 }
 
@@ -270,8 +278,8 @@ header nav .tab-button {
 	align-items: center;
 	justify-content: space-between;
 	flex-direction: row;
-	width: 10rem;
-	height: 2.25rem;
+	width: var(--header-nav-tabs-width);
+	height: var(--header-nav-tabs-height);
 	padding: 0.5rem 0.75rem;
 	padding-bottom: 1rem;
 	border-radius: var(--button-br) var(--button-br) 0 0;
@@ -294,10 +302,9 @@ header nav .tab-button .tab-title {
 
 .tab-separator {
 	display: flex;
-	width: 2px;
-	height: 1.75rem;
+	width: var(--separator-width);
+	height: calc(var(--header-height) - 1rem);
 	background: var(--light);
-	z-index: 9998;
 	transform: translateY(-0.5rem);
 	flex-shrink: 0;
 }
@@ -480,7 +487,18 @@ footer nav a {
 }
 
 footer nav a:hover {
+	background: var(--light);
+}
+
+footer nav a.active {
 	background: var(--footer-nav-button-bg-color);
 	box-shadow: var(--default-bs);
 	color: var(--fc);
+}
+
+footer nav .separator {
+	height: 2rem;
+	width: var(--separator-width);
+	border-radius: calc(var(--separator-width) / 2);
+	background-color: var(--light);
 }
