@@ -4,26 +4,28 @@ import "./App.css";
 
 export function Animations() {
 	useEffect(() => {
-		const reveals = document.querySelectorAll("main > div > section");
+		const animatedElements = document.querySelectorAll(
+				".scroll-fade-up"
+		);
 
 		const observer = new IntersectionObserver(
-		entries => {
-			entries.forEach(entry => {
-			if (entry.isIntersecting) {
-				entry.target.classList.add("visible");
-			}
-			});
-		},
-		{ threshold: 0.1 }
+			entries => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add("is-visible");
+					}
+				});
+			},
+			{ threshold: 0.1 }
 		);
 
 		let delay = 0;
-		reveals.forEach(el => {
-			(el as HTMLElement).style.transitionDelay = `${delay}s`;
-			delay += 0.1;
-			observer.observe(el);
-			});
-	}, []);
+		animatedElements.forEach(el => {
+				(el as HTMLElement).style.transitionDelay = `${delay}s`;
+				delay += 0.1;
+				observer.observe(el);
+				});
+}, []);
 
 	return null;
 }
@@ -105,13 +107,13 @@ export default function App() {
 
 	const activeTab = tabs.find((t) => t.id === activeTabId);
 
-	function renderActiveTabContent(tab: Tab) {
+	function renderActiveTabContent() {
 		return (
 		<div className="new-tab-page">
 			<section className="my-week">
 				<h1>Sua Semana</h1>
 				<div className="current-previous-next-class">
-					<div className="current-class fade-up">
+					<div className="current-class scroll-fade-up">
 						<p>Aula em Andamento - Disciplina:</p>
 						<h2>Tema da Aula</h2>
 						<div className="files">
@@ -137,7 +139,7 @@ export default function App() {
 				<h2>Todas as Aulas</h2>
 			</section>
 
-			<section className="tasks">
+			<section className="tasks scroll-fade-up">
 				<h1>Suas Tarefas</h1>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptas voluptatum dicta quae sapiente mollitia totam esse debitis modi cupiditate labore autem veniam, reprehenderit ex cum perferendis et. Iusto fugit corrupti architecto consequatur sapiente autem numquam explicabo adipisci molestias neque quasi mollitia unde, velit laborum culpa officiis quo necessitatibus doloribus nam commodi magnam. Rerum qui, consequatur perferendis, iusto omnis quo, id sit excepturi assumenda voluptatem libero facilis! Ea impedit quod aliquam ducimus in, commodi ipsam libero inventore nisi veritatis ut dicta alias, laudantium accusamus assumenda, consequatur facere tempora neque eius mollitia laborum officiis perferendis architecto magni. Corporis aliquid quis rem.</p>
 			</section>
@@ -202,7 +204,7 @@ export default function App() {
 			</header>
 
 			<main className="tab-content">
-				{activeTab && renderActiveTabContent(activeTab)}
+				{activeTab && renderActiveTabContent()}
 			</main>
 		</>
 	);
