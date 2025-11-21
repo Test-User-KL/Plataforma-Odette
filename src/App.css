@@ -51,6 +51,7 @@
 	--default-fs: 0.9rem;
 	--light-bs: 0 0 0.5rem rgba(0, 0, 0, 0.125);
 	--default-bs: 0 0 1rem rgba(0, 0, 0, 0.25);
+	--border-color: var(--gray6);
 	--border-width: 1px;
 	--default-color-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 	--default-size-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, scale 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -98,18 +99,23 @@ h6 { font-size: 1.25rem; }
 hr {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
+	border: 0.1rem solid var(--border-color);
+	border-radius: 0.1rem;
 }
 
 body {
 	background: var(--body-bg-color);
+	overflow: hidden;
 }
 
 header {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	position: fixed;
 	padding-left: 0.5rem;
 	height: 2.75rem;
+	width: 100%;
 	gap: 0.5rem;
 	background: var(--header-bg-color);
 }
@@ -224,6 +230,17 @@ header nav .tab-button .tab-title {
 	border-radius: 1.25rem;
 }
 
-main > div {
-	padding: 2rem;
+main {
+	padding-top: 4.75rem;
 }
+
+main > div {
+	display: flex;
+	flex-direction: column;
+	padding: 2rem;
+	padding-top: 0;
+	gap: 1rem;
+	height: calc(100vh - 4.75rem);
+	overflow-y: auto;
+}
+

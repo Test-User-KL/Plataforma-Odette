@@ -84,10 +84,10 @@ export default function App() {
 			<h1>Sua Semana</h1>
 			<div className="current-previous-next-class">
 				<div className="current-class">
-					<p>Aula em Andamento:</p>
+					<p>Aula em Andamento - Disciplina:</p>
 					<h2>Tema da Aula</h2>
 					<div className="files">
-						
+						Esta aula não possui anexos.
 					</div>
 				</div>
 				<div className="previous-class">
@@ -102,7 +102,7 @@ export default function App() {
 
 			<hr />
 
-			
+			<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem nihil sint molestiae nulla suscipit porro dolor facere, perspiciatis maiores vero. Aut delectus amet alias enim autem cumque facere ex, natus pariatur ut veritatis at dicta eaque tempora a. Cumque voluptatibus facilis odit quia laboriosam est, eos alias molestiae? Dignissimos, porro?</p>
 		</div>
 
 		<div className="tasks">
