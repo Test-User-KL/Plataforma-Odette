@@ -82,11 +82,31 @@ export default function App() {
       <div className="new-tab-page">
 		<div className="my-week">
 			<h1>Sua Semana</h1>
-			<p>Esta é a página inicial desta aba, como uma nova guia do navegador.</p>
+			<div className="current-previous-next-class">
+				<div className="current-class">
+					<p>Aula em Andamento:</p>
+					<h2>Tema da Aula</h2>
+					<div className="files">
+						
+					</div>
+				</div>
+				<div className="previous-class">
+					<p>Aula Anterior:</p>
+					<h5>Disciplina</h5>
+				</div>
+				<div className="next-class">
+					<p>Próxima Aula:</p>
+					<h5>Disciplina</h5>
+				</div>
+			</div>
+
+			<hr />
+
+			
 		</div>
 
-		<div>
-
+		<div className="tasks">
+			<h1>Suas Tarefas</h1>
 		</div>
       </div>
     );
@@ -101,7 +121,7 @@ export default function App() {
 			className="new-tab-button"
 			title="Nova aba"
 			>
-			<i className="fas fa-plus"></i>
+				<i className="fas fa-plus"></i>
 			</button>
 
 			<nav className="tab-nav">

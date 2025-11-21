@@ -1,15 +1,18 @@
 * {
 	margin: 0;
 	padding: 0;
+	line-height: 1;
 	font-family: 'Inter', 'sans-serif';
 	box-sizing: border-box;
 }
 
 :root {
 	/* Paleta de Cores */
+	--extralight-emphasis: rgb(185, 200, 255);
 	--light-emphasis: rgb(50, 70, 250);
 	--emphasis: rgb(0, 30, 200);
 	--dark-emphasis: rgb(0, 30, 160);
+	--extradark-emphasis: rgb(0, 10, 60);
 
 	--gray1: rgb(245, 245, 250);
 	--gray2: rgb(235, 235, 240);
@@ -57,7 +60,6 @@
 
 h1, h2 {
 	font-family: 'Inter Tight', 'sans-serif';
-	line-height: 1;
 }
 
 h1 { font-size: 3rem; }
@@ -91,6 +93,11 @@ h6 { font-size: 1.25rem; }
 	background: var(--button-bg-tertiary-color);
 	border: var(--border-width) solid var(--button-bg-tertiary-color);
 	color: white;
+}
+
+hr {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
 
 body {
@@ -174,6 +181,49 @@ header nav .tab-button .tab-title {
 	flex-shrink: 0;
 }  
 
-main {
+.my-week .current-previous-next-class {
+	display: grid;
+	grid-template-areas: 
+		'current previous'
+		'current next'
+	;
+	grid-template-columns: calc(100% - 11rem) 10rem;
+	grid-template-rows: 7.5rem 7.5rem;
+	gap: 1rem;
+}
+
+.my-week .current-previous-next-class .current-class { grid-area: current; }
+.my-week .current-previous-next-class .previous-class { grid-area: previous; }
+.my-week .current-previous-next-class .next-class { grid-area: next; }
+
+.my-week .current-previous-next-class .current-class {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	padding: 1.75rem;
+	background: var(--emphasis);
+	border-radius: 1.25rem;	
+	color: white;
+}
+
+.my-week .current-previous-next-class .current-class .files {
+	height: 100%;
+	width: 100%;
+	background: var(--light);
+	border-radius: 0.75rem;
+	margin-top: 0.75rem;
+}
+
+.my-week .current-previous-next-class :is(.previous-class, .next-class) {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+	background: var(--extralight-emphasis);
+	border-radius: 1.25rem;
+}
+
+main > div {
 	padding: 2rem;
 }
