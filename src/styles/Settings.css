@@ -3,6 +3,7 @@
     --setting-option-bd: var(--gray5);
     --example-bg: var(--gray1);
     --select-button-bg: var(--gray1);
+    --select-button-active-bg: var(--secondary-emphasis);
     --select-button-bd: var(--gray5);
 }
 
@@ -287,8 +288,18 @@
     background: var(--select-button-bg);
     border: var(--border-width) solid var(--select-button-bd);
     box-shadow: none;
+    transition: var(--default-color-transition);
 }
 
 .select-button:hover {
     background: var(--select-button-bg);
+}
+
+.select-button i {
+    color: var(--white);
+    opacity: 0;
+}
+.select-button.active {
+    background-color: var(--select-button-active-bg);
+    border-color: var(--select-button-active-bg);
 }

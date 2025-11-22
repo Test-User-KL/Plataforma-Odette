@@ -328,7 +328,9 @@ export default function App() {
 											Tema Claro
 										</h6>
 										<p>Melhora legibilidade, adequado para ambientes iluminados</p>
-										<button className="select-button"></button>
+										<button className="select-button">
+											<i className="fa-solid fa-check"></i>
+										</button>
 									</div>
 									<div>
 										<div id="dark-mode-example" className="setting-example">
@@ -355,7 +357,9 @@ export default function App() {
 											Tema Escuro
 										</h6>
 										<p>Reduz cansaço visual, adequado para ambientes escuros</p>
-										<button className="select-button"></button>
+										<button className="select-button">
+											<i className="fa-solid fa-check"></i>
+										</button>
 									</div>
 								</div>
 							</div>

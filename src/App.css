@@ -23,13 +23,6 @@
 	--purple: rgb(50, 0, 230);
 	--pink: rgb(230, 0, 100);
 
-	--gray1: rgb(245, 245, 250);
-	--gray2: rgb(235, 235, 240);
-	--gray3: rgb(225, 225, 230);
-	--gray4: rgb(215, 215, 220);
-	--gray5: rgb(205, 205, 210);
-	--gray6: rgb(195, 195, 200);
-
 	--lgray1: rgb(245, 245, 250);
 	--lgray2: rgb(235, 235, 240);
 	--lgray3: rgb(225, 225, 230);
@@ -43,6 +36,13 @@
 	--dgray4: rgb(40, 40, 45);
 	--dgray5: rgb(50, 50, 55);
 	--dgray6: rgb(60, 60, 65);
+
+	--gray1: var(--lgray1);
+	--gray2: var(--lgray2);
+	--gray3: var(--lgray3);
+	--gray4: var(--lgray4);
+	--gray5: var(--lgray5);
+	--gray6: var(--lgray6);
 
 	--light: rgba(255, 255, 255, 0.15);
 	--shadow: rgba(0, 0, 0, 0.15);
@@ -91,7 +91,7 @@
 	--separator-width: 2px;
 
 	/* Transições */
-	--default-color-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+	--default-color-transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
 	--default-size-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, scale 0.3s ease-in-out, transform 0.3s ease-in-out;
 	--default-spaces-transition: margin 0.3s ease-in-out, padding 0.3s ease-in-out, gap 0.3s ease-in-out;
 	--default-height-transition: height 0.3s ease-in-out;
