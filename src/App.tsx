@@ -323,9 +323,12 @@ export default function App() {
 												</div>
 											</div>
 										</div>
-										<h6>Tema Claro</h6>
+										<h6>
+											<i className="fa-solid fa-sun"></i>
+											Tema Claro
+										</h6>
 										<p>Melhora legibilidade, adequado para ambientes iluminados</p>
-										<button className="select-button">a</button>
+										<button className="select-button"></button>
 									</div>
 									<div>
 										<div id="dark-mode-example" className="setting-example">
@@ -347,9 +350,12 @@ export default function App() {
 												</div>
 											</div>
 										</div>
-										<h6>Tema Claro</h6>
+										<h6>
+											<i className="fa-solid fa-moon"></i>
+											Tema Escuro
+										</h6>
 										<p>Reduz cansaço visual, adequado para ambientes escuros</p>
-										<button className="select-button">a</button>
+										<button className="select-button"></button>
 									</div>
 								</div>
 							</div>

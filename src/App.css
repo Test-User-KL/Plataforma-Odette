@@ -75,7 +75,7 @@
 	--major-padding-section: 5rem;
 
 	/* Dialog */
-	--dialog-bg: var(--gray2);
+	--dialog-bg: var(--gray1);
 
 	/* Outros */
 	--header-footer-z-index: 9998;
