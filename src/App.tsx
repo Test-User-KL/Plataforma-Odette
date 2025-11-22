@@ -90,7 +90,7 @@ export default function App() {
 
 		return (
 			<React.Fragment key={activeTabId}>
-				<div className="home-page">
+				<div id="home" className="home-page">
 					<footer className="home-nav">
 						<nav>
 							<a href="#my-week">
