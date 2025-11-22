@@ -1,0 +1,19 @@
+
+@media (max-width: 959px) {
+    .settings-page header {
+        padding: 0 var(--minor-padding-section);
+    }
+    .settings-page section {
+        padding-left: calc(var(--minor-padding-section) + 4rem);
+    }
+}
+
+@media (min-width: 960px) {
+    .settings-page header {
+        padding: 0 var(--major-padding-section);
+    }
+    .settings-page section {
+        padding-left: calc(var(--major-padding-section) + 4rem);
+    }
+}
+

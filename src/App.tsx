@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
 import "./styles/Home.css";
+import "./styles/Settings.css";
 
 type TabView = "home" | "settings" | "account";
 
@@ -271,8 +272,7 @@ export default function App() {
 		if (tab.view === "settings") {
 			return (
 				<div id="settings" className="settings-page">
-					<section className="tab-content-header">
-						<header className="tab-content-title">
+					<header className="tab-content-title">
 							<a 
 								className="back-btn"
 								href="#home"
@@ -284,12 +284,33 @@ export default function App() {
 								<i className="fa-solid fa-arrow-left"></i>
 							</a>
 							<h1>Configurações</h1>
-						</header>
-					</section>
+					</header>
 
-					<section>
-
+					<section className="customization-settings">
+						<div className="divider">
+							<i className="fa-solid fa-palette"></i>
+							<h6>Customização</h6>
+						</div>
+						<div>
+							<div>
+								<h6>Cor Principal</h6>
+							</div>
+							<div>
+								<h6>Cor Secundária</h6>
+							</div>
+						</div>
 					</section>
+					
+					<div className="color-selector">
+						<button className="red" style={{ backgroundColor: 'var(--red)' }}></button>
+						<button className="orange" style={{ backgroundColor: 'var(--orange)' }}></button>
+						<button className="yellow" style={{ backgroundColor: 'var(--yellow)' }}></button>
+						<button className="green" style={{ backgroundColor: 'var(--green)' }}></button>
+						<button className="turquoise" style={{ backgroundColor: 'var(--turquoise)' }}></button>
+						<button className="blue" style={{ backgroundColor: 'var(--blue)' }}></button>
+						<button className="purple" style={{ backgroundColor: 'var(--purple)' }}></button>
+						<button className="pink" style={{ backgroundColor: 'var(--pink)' }}></button>
+					</div>
 				</div>
 			);
 		}
