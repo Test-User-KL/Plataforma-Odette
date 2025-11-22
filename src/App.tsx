@@ -4,19 +4,21 @@ import "./App.css";
 type Tab = {
 	id: number;
 	title: string;
+	iconClass: string;
 };
 
 export default function App() {
 	const [tabs, setTabs] = useState<Tab[]>([
-		{ id: 1, title: "Nova Aba" },
+		{ id: 1, title: "Página Inicial", iconClass: "fa-solid fa-house" },
 	]);
 	const [activeTabId, setActiveTabId] = useState<number>(1);
 	const [draggedTabId, setDraggedTabId] = useState<number | null>(null);
 
 	function handleNewTab() {
 		const newTab: Tab = {
-		id: Date.now(),
-		title: "Nova Aba",
+			id: Date.now(),
+			title: "Página Inicial",
+			iconClass: "fa-solid fa-house"
 		};
 
 		setTabs((prev) => [...prev, newTab]);
@@ -89,107 +91,126 @@ export default function App() {
 		});
 
 		return (
-			<div key={activeTabId} className="new-tab-page">
-				<footer className="home-nav">
-					<nav>
-						<a href="#my-week">
-							<i className="fa-regular fa-clock"></i>
-							Aulas
-						</a>
-						<a href="#my-tasks">
-							<i className="fa-solid fa-clipboard-list"></i>
-							Tarefas
-						</a>
-						<a href="#my-calendar">
-							<i className="fa-regular fa-calendar"></i>
-							Calendário
-						</a>
-						<a href="#my-subjects">
-							<i className="fa-solid fa-graduation-cap"></i>
-							Disciplinas
-						</a>
+			<React.Fragment key={activeTabId}>
+				<div className="home-page">
+					<footer className="home-nav">
+						<nav>
+							<a href="#my-week">
+								<i className="fa-regular fa-clock"></i>
+								Aulas
+							</a>
+							<a href="#my-tasks">
+								<i className="fa-solid fa-clipboard-list"></i>
+								Tarefas
+							</a>
+							<a href="#my-calendar">
+								<i className="fa-regular fa-calendar"></i>
+								Calendário
+							</a>
+							<a href="#my-subjects">
+								<i className="fa-solid fa-graduation-cap"></i>
+								Disciplinas
+							</a>
 
-						<span className="separator"></span>
+							<span className="separator"></span>
 
-						<a href="#settings">
-							<i className="fa-solid fa-gear"></i>
-						</a>
-						<a href="#account">
-							<i className="fa-solid fa-user"></i>
-						</a>
-					</nav>
-				</footer>
+							<a href="#settings">
+								<i className="fa-solid fa-gear"></i>
+								Configuração
+							</a>
+							<a href="#account">
+								<i className="fa-solid fa-user"></i>
+								Conta
+							</a>
+						</nav>
+					</footer>
 
-				<section id="my-week" className="my-week">
-					<div className="summary">
-						<h1 {...fadeIn("")}>Aulas de Hoje</h1>
-						<button {...fadeIn("special show-schedule")}>Horário das Aulas</button>
-						<div className="current-previous-next-class">
-							<div {...fadeIn("current-class")}>
-								<div className="texts">
-									<p>Atual - Disciplina:</p>
-									<h2>Tema da Aula</h2>	
-								</div>
-								<div  {...fadeIn("files")}>
-									<h6>Arquivos</h6>
-									<div className="files-list">
-										<button {...fadeIn("")}>
+					<section id="my-week" className="my-week">
+						<div className="summary">
+							<h1 {...fadeIn("")}>Aulas de Hoje</h1>
+							<button {...fadeIn("special show-schedule")}>Horário das Aulas</button>
+							<div className="current-previous-next-class">
+								<div {...fadeIn("current-class")}>
+									<div className="texts">
+										<p>Atual - Disciplina:</p>
+										<h2>Tema da Aula</h2>
+									</div>
+									<div  {...fadeIn("files")}>
+										<h6>Arquivos</h6>
+										<div className="files-list">
+											<button {...fadeIn("")}>
 											<i className="fa-regular fa-file"></i>
-											Arquivo 1
-										</button>
-										<button {...fadeIn("")}>
-											<i className="fa-regular fa-file"></i>
-											Arquivo 2
-										</button>
-										<button {...fadeIn("")}>
-											<i className="fa-regular fa-file"></i>
-											Arquivo 3
-										</button>
+												Arquivo 1
+											</button>
+											<button {...fadeIn("")}>
+												<i className="fa-regular fa-file"></i>
+												Arquivo 2
+											</button>
+											<button {...fadeIn("")}>
+												<i className="fa-regular fa-file"></i>
+												Arquivo 3
+											</button>
+										</div>
+									</div>
+									<div {...fadeIn("shortcuts")}>
+										<h6>Atalhos</h6>
+										<div className="shortcuts-list">
+											<button {...fadeIn("")}>
+												<i className="fa-solid fa-graduation-cap"></i>
+												Disciplina
+											</button>
+											<button {...fadeIn("")}>
+												<i className="fa-solid fa-clipboard-list"></i>
+												Tarefas
+											</button>
+											<button {...fadeIn("")}>
+												<i className="fa-solid fa-book"></i>
+												Caderno
+											</button>
+										</div>
 									</div>
 								</div>
-								<div {...fadeIn("shortcuts")}>
-									<h6>Atalhos</h6>
-									<div className="shortcuts-list">
-										<button {...fadeIn("")}>
-											<i className="fa-solid fa-graduation-cap"></i>
-											Disciplina
-										</button>
-										<button {...fadeIn("")}>
-											<i className="fa-solid fa-clipboard-list"></i>
-											Tarefas
-										</button>
-										<button {...fadeIn("")}>
-											<i className="fa-solid fa-book"></i>
-											Caderno
-										</button>
-									</div>
-									
+								<div {...fadeIn("previous-class")}>
+										<p>Anterior:</p>
+										<h5>Disciplina</h5>
+								</div>
+								<div {...fadeIn("next-class")}>
+										<p>Próxima:</p>
+										<h5>Disciplina</h5>
 								</div>
 							</div>
-							<div {...fadeIn("previous-class")}>
-								<p>Anterior:</p>
-								<h5>Disciplina</h5>
-							</div>
-							<div {...fadeIn("next-class")}>
-								<p>Próxima:</p>
-								<h5>Disciplina</h5>
-							</div>
-						</div>
-					</div>
+						</div>	
 
-					<hr {...fadeIn("")}/>
+						<hr {...fadeIn("")}/>
 
-					<h2 {...fadeIn("")}>Todas as Aulas</h2>
-				</section>
+						<h2 {...fadeIn("")}>Todas as Aulas</h2>
+					</section>
+		
+					<section id="my-tasks" className="my-tasks">
+						<h1 {...fadeIn("")}>Suas Tarefas</h1>
+					</section>
 
-				<section id="my-tasks" className="my-tasks">
-					<h1 {...fadeIn("")}>Suas Tarefas</h1>
-				</section>
+					<section id="my-subjects">
+						<h1 {...fadeIn("")}>Suas Disciplinas</h1>
+					</section>
+				</div>
 
-				<section id="my-subjects">
-					<h1 {...fadeIn("")}>Suas Disciplinas</h1>
-				</section>
-			</div>
+				<div id="settings" className="settings-page">
+					<h1>
+						<i className="fa-solid fa-gear"></i>
+						<span>Configuração</span>
+					</h1>
+					<p>Personalize suas preferências, notificações e tema.</p>
+				</div>
+
+				<div id="account" className="account-page">
+					<h1>
+						<i className="fa-solid fa-user"></i>
+						<span>Conta</span>
+					</h1>
+					<p>Gerencie seus dados pessoais e opções de segurança.</p>
+				</div>
+			</React.Fragment>
 		);
 	}
 

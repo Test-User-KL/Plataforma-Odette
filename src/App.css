@@ -450,7 +450,7 @@ footer {
 	left: 2rem;
 	bottom: 2rem;
 	max-width: calc(100% - 4rem);
-	padding: 0.5rem;
+	padding: 0.25rem;
 	height: 3rem;
 	border-radius: 1.5rem;
 	background: var(--footer-nav-bg-color);
@@ -477,7 +477,7 @@ footer nav a {
 	align-items: center;
 	justify-content: center;
 	height: 100%;
-	border-radius: 1rem;
+	border-radius: 1.25rem;
 	gap: 0.3rem;
 	padding: 0 1rem;
 	color: var(--white);
