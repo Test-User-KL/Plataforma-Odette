@@ -184,6 +184,8 @@ body {
 		width: auto;
 	}
 }
+
+/* Media Queries */
 @media (min-width: 960px) {
 	.my-week .summary .current-previous-next-class {
 		grid-template-areas: 
@@ -229,7 +231,7 @@ body {
 
 .animate-fade-in {
 	animation: fade-in-up 0.6s ease-out both;
-	animation-delay: calc(var(--fade-order, 0) * 0.1s);
+	animation-delay: calc(var(--fade-order, 0) * 0.05s);
 }
   
 /* Header */

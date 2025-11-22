@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 type Tab = {
@@ -13,6 +13,34 @@ export default function App() {
 	]);
 	const [activeTabId, setActiveTabId] = useState<number>(1);
 	const [draggedTabId, setDraggedTabId] = useState<number | null>(null);
+	const appRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		if (!appRef.current) return;
+
+		const mainElement = appRef.current?.querySelectorAll("main section");
+		if (!mainElement) return;
+
+		const elements: HTMLElement[] = [];
+
+		mainElement.forEach((section) => {
+			const children = section.querySelectorAll<HTMLElement>("*");
+			children.forEach((child) => elements.push(child));
+		});
+
+
+		elements.forEach((element) => {
+			element.classList.remove("animate-fade-in");
+			element.style.removeProperty("--fade-order");
+		});
+
+		requestAnimationFrame(() => {
+			elements.forEach((element, index) => {
+				element.style.setProperty("--fade-order", `${index}`);
+				element.classList.add("animate-fade-in");
+			});
+		});
+	}, [activeTabId, tabs]);
 
 	function handleNewTab() {
 		const newTab: Tab = {
@@ -80,14 +108,6 @@ export default function App() {
 	const activeTab = tabs.find((t) => t.id === activeTabId);
 
 	function renderActiveTabContent() {
-		let fadeOrder = 0;
-		const nextFadeStyle = (): React.CSSProperties =>
-			({ "--fade-order": fadeOrder++ } as React.CSSProperties);
-		const fadeIn = (className: string) => ({
-			className: `${className} animate-fade-in`,
-			style: nextFadeStyle(),
-		});
-
 		return (
 			<React.Fragment key={activeTabId}>
 				<div id="home" className="home-page">
@@ -125,71 +145,71 @@ export default function App() {
 
 					<section id="my-week" className="my-week">
 						<div className="summary">
-							<h1 {...fadeIn("")}>Aulas de Hoje</h1>
-							<button {...fadeIn("special show-schedule")}>Horário das Aulas</button>
+							<h1>Aulas de Hoje</h1>
+							<button className="special show-schedule">Horário das Aulas</button>
 							<div className="current-previous-next-class">
-								<div {...fadeIn("current-class")}>
+								<div className="current-class">
 									<div className="texts">
 										<p>Atual - Disciplina:</p>
 										<h2>Tema da Aula</h2>
 									</div>
-									<div  {...fadeIn("files")}>
+									<div  className="files">
 										<h6>Arquivos</h6>
 										<div className="files-list">
-											<button {...fadeIn("")}>
+											<button>
 											<i className="fa-regular fa-file"></i>
 												Arquivo 1
 											</button>
-											<button {...fadeIn("")}>
+											<button>
 												<i className="fa-regular fa-file"></i>
 												Arquivo 2
 											</button>
-											<button {...fadeIn("")}>
+											<button>
 												<i className="fa-regular fa-file"></i>
 												Arquivo 3
 											</button>
 										</div>
 									</div>
-									<div {...fadeIn("shortcuts")}>
+									<div className="shortcuts">
 										<h6>Atalhos</h6>
 										<div className="shortcuts-list">
-											<button {...fadeIn("")}>
+											<button>
 												<i className="fa-solid fa-graduation-cap"></i>
 												Disciplina
 											</button>
-											<button {...fadeIn("")}>
+											<button>
 												<i className="fa-solid fa-clipboard-list"></i>
 												Tarefas
 											</button>
-											<button {...fadeIn("")}>
+											<button>
 												<i className="fa-solid fa-book"></i>
 												Caderno
 											</button>
 										</div>
 									</div>
 								</div>
-								<div {...fadeIn("previous-class")}>
+								<div className="previous-class">
 										<p>Anterior:</p>
 										<h5>Disciplina</h5>
 								</div>
-								<div {...fadeIn("next-class")}>
+								<div className="next-class">
 										<p>Próxima:</p>
 										<h5>Disciplina</h5>
 								</div>
 							</div>
 						</div>	
 
-						<hr {...fadeIn("")}/>
+						<hr/>
 
-						<h2 {...fadeIn("")}>Todas as Aulas</h2>
+						<h2>Todas as Aulas</h2>
 					</section>
 		
 					<section id="my-tasks" className="my-tasks">
-						<h1 {...fadeIn("")}>Suas Tarefas</h1>
+						<h1>Suas Tarefas</h1>
 					</section>
 
 					<section id="my-subjects">
-						<h1 {...fadeIn("")}>Suas Disciplinas</h1>
+						<h1>Suas Disciplinas</h1>
 					</section>
 				</div>
 
@@ -213,7 +233,7 @@ export default function App() {
 	}
 
 	return (
-		<>
+		<div ref={appRef} className="app-root">
 			<header className="tab-header">
 				<button
 					id="new-tab"
@@ -271,6 +291,6 @@ export default function App() {
 			<main className="tab-content">
 				{activeTab && renderActiveTabContent()}
 			</main>
-		</>
+		</div>
 	);
 }
