@@ -95,30 +95,30 @@ export default function App() {
 						<nav>
 							<a href="#my-week">
 								<i className="fa-regular fa-clock"></i>
-								Aulas
+								<span>Aulas</span>
 							</a>
 							<a href="#my-tasks">
 								<i className="fa-solid fa-clipboard-list"></i>
-								Tarefas
+								<span>Tarefas</span>
 							</a>
 							<a href="#my-calendar">
 								<i className="fa-regular fa-calendar"></i>
-								Calendário
+								<span>Calendário</span>
 							</a>
 							<a href="#my-subjects">
 								<i className="fa-solid fa-graduation-cap"></i>
-								Disciplinas
+								<span>Disciplinas</span>
 							</a>
 
 							<span className="separator"></span>
 
 							<a href="#settings">
 								<i className="fa-solid fa-gear"></i>
-								Configuração
+								<span>Configuração</span>
 							</a>
 							<a href="#account">
 								<i className="fa-solid fa-user"></i>
-								Conta
+								<span>Conta</span>
 							</a>
 						</nav>
 					</footer>
