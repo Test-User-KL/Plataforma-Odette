@@ -371,9 +371,11 @@ export default function App() {
 								</div>
 								<div className="setting-select">
 									<h6>Cor Principal</h6>
+									<button onClick={(e) => {selectMainColor()}}></button> {/* Abre o seletor de cores*/}
 								</div>
 								<div>
 									<h6>Cor Secundária</h6>
+									<button onClick={(e) => {selectSecondaryColor()}}></button> {/* Abre o seletor de cores*/}
 								</div>
 							</div>
 						</div>
