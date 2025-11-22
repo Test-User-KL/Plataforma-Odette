@@ -1,15 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
 
+type TabView = "home" | "settings" | "account";
+
 type Tab = {
 	id: number;
 	title: string;
 	iconClass: string;
+	view: TabView;
 };
 
 export default function App() {
 	const [tabs, setTabs] = useState<Tab[]>([
-		{ id: 1, title: "Página Inicial", iconClass: "fa-solid fa-home" },
+		{ 
+			id: 1, 
+			title: "Página Inicial", 
+			iconClass: "fa-solid fa-home",
+			view: "home"
+		},
 	]);
 	const [activeTabId, setActiveTabId] = useState<number>(1);
 	const [draggedTabId, setDraggedTabId] = useState<number | null>(null);
@@ -46,12 +54,46 @@ export default function App() {
 		const newTab: Tab = {
 			id: Date.now(),
 			title: "Página Inicial",
-			iconClass: "fa-solid fa-home"
+			iconClass: "fa-solid fa-home",
+			view: "home",
 		};
 
 		setTabs((prev) => [...prev, newTab]);
 		setActiveTabId(newTab.id);
 	}
+
+	function changeTab(targetView: TabView) {
+		setTabs((prevTabs) =>
+			prevTabs.map((tab) => {
+				if (tab.id !== activeTabId) return tab;
+		
+				if (targetView === "home") {
+				return {
+					...tab,
+					view: "home",
+					title: "Página Inicial",
+					iconClass: "fa-solid fa-home",
+				};
+				}
+		
+				if (targetView === "settings") {
+				return {
+					...tab,
+					view: "settings",
+					title: "Configurações",
+					iconClass: "fa-solid fa-gear",
+				};
+				}
+		
+				return {
+				...tab,
+				view: "account",
+				title: "Conta",
+				iconClass: "fa-solid fa-user",
+				};
+			})
+		);
+	}	  
 
 	function handleCloseTab(id: number) {
 		if (tabs.length === 1) return;
@@ -107,125 +149,163 @@ export default function App() {
 
 	const activeTab = tabs.find((t) => t.id === activeTabId);
 
-	function renderActiveTabContent() {
-		return (
-			<React.Fragment key={activeTabId}>
-				<div id="home" className="home-page">
-					<footer className="home-nav">
-						<nav>
-							<a href="#my-week">
-								<i className="fa-regular fa-clock"></i>
-								<span>Aulas</span>
-							</a>
-							<a href="#my-tasks">
-								<i className="fa-solid fa-clipboard-list"></i>
-								<span>Tarefas</span>
-							</a>
-							<a href="#my-subjects">
-								<i className="fa-solid fa-graduation-cap"></i>
-								<span>Disciplinas</span>
-							</a>
-
-							<span className="separator"></span>
-
-							<a href="#settings">
-								<i className="fa-solid fa-gear"></i>
-								<span>Configuração</span>
-							</a>
-							<a href="#account">
-								<i className="fa-solid fa-user"></i>
-								<span>Conta</span>
-							</a>
-						</nav>
-					</footer>
-
-					<section id="my-week" className="my-week">
-						<div className="summary">
-							<h1>Aulas de Hoje</h1>
-							<button className="special show-schedule">Horário das Aulas</button>
-							<div className="current-previous-next-class">
-								<div className="current-class">
-									<div className="texts">
-										<p>Atual - Disciplina:</p>
-										<h2>Tema da Aula</h2>
-									</div>
-									<div  className="files">
-										<h6>Arquivos</h6>
-										<div className="files-list">
-											<button>
-											<i className="fa-regular fa-file"></i>
-												Arquivo 1
-											</button>
-											<button>
+	function renderActiveTabContent(tab: Tab) {
+		if (tab.view === "home") {
+			return (
+				<React.Fragment key={activeTabId}>
+					<div id="home" className="home-page">
+						<footer className="home-nav">
+							<nav>
+								<a href="#my-week">
+									<i className="fa-regular fa-clock"></i>
+									<span>Aulas</span>
+								</a>
+								<a href="#my-tasks">
+									<i className="fa-solid fa-clipboard-list"></i>
+									<span>Tarefas</span>
+								</a>
+								<a href="#my-subjects">
+									<i className="fa-solid fa-graduation-cap"></i>
+									<span>Disciplinas</span>
+								</a>
+	
+								<span className="separator"></span>
+	
+								<a 
+									href="#settings"
+									onClick={(e) => {
+										e.preventDefault();
+										changeTab("settings");
+									}}
+								>
+									<i className="fa-solid fa-gear"></i>
+									<span>Configuração</span>
+								</a>
+								<a 
+									href="#account"
+									onClick={(e) => {
+										e.preventDefault();
+										changeTab("account");
+									}}
+								>
+									<i className="fa-solid fa-user"></i>
+									<span>Conta</span>
+								</a>
+							</nav>
+						</footer>
+	
+						<section id="my-week" className="my-week">
+							<div className="summary">
+								<h1>Aulas de Hoje</h1>
+								<button className="special show-schedule">Horário das Aulas</button>
+								<div className="current-previous-next-class">
+									<div className="current-class">
+										<div className="texts">
+											<p>Atual - Disciplina:</p>
+											<h2>Tema da Aula</h2>
+										</div>
+										<div  className="files">
+											<h6>Arquivos</h6>
+											<div className="files-list">
+												<button>
 												<i className="fa-regular fa-file"></i>
-												Arquivo 2
-											</button>
-											<button>
-												<i className="fa-regular fa-file"></i>
-												Arquivo 3
-											</button>
+													Arquivo 1
+												</button>
+												<button>
+													<i className="fa-regular fa-file"></i>
+													Arquivo 2
+												</button>
+												<button>
+													<i className="fa-regular fa-file"></i>
+													Arquivo 3
+												</button>
+											</div>
+										</div>
+										<div className="shortcuts">
+											<h6>Atalhos</h6>
+											<div className="shortcuts-list">
+												<button>
+													<i className="fa-solid fa-graduation-cap"></i>
+													Disciplina
+												</button>
+												<button>
+													<i className="fa-solid fa-clipboard-list"></i>
+													Tarefas
+												</button>
+												<button>
+													<i className="fa-solid fa-book"></i>
+													Caderno
+												</button>
+											</div>
 										</div>
 									</div>
-									<div className="shortcuts">
-										<h6>Atalhos</h6>
-										<div className="shortcuts-list">
-											<button>
-												<i className="fa-solid fa-graduation-cap"></i>
-												Disciplina
-											</button>
-											<button>
-												<i className="fa-solid fa-clipboard-list"></i>
-												Tarefas
-											</button>
-											<button>
-												<i className="fa-solid fa-book"></i>
-												Caderno
-											</button>
-										</div>
+									<div className="previous-class">
+											<p>Anterior:</p>
+											<h5>Disciplina</h5>
+									</div>
+									<div className="next-class">
+											<p>Próxima:</p>
+											<h5>Disciplina</h5>
 									</div>
 								</div>
-								<div className="previous-class">
-										<p>Anterior:</p>
-										<h5>Disciplina</h5>
-								</div>
-								<div className="next-class">
-										<p>Próxima:</p>
-										<h5>Disciplina</h5>
-								</div>
-							</div>
-						</div>	
+							</div>	
+	
+							<hr/>
+	
+							<h2>Todas as Aulas</h2>
+						</section>
+			
+						<section id="my-tasks" className="my-tasks">
+							<h1>Suas Tarefas</h1>
+						</section>
+	
+						<section id="my-subjects">
+							<h1>Suas Disciplinas</h1>
+						</section>
+					</div>
+	
+					<div id="settings" className="settings-page">
+						<h1>
+							<i className="fa-solid fa-gear"></i>
+							<span>Configuração</span>
+						</h1>
+						<p>Personalize suas preferências, notificações e tema.</p>
+					</div>
+	
+					<div id="account" className="account-page">
+						<h1>
+							<i className="fa-solid fa-user"></i>
+							<span>Conta</span>
+						</h1>
+						<p>Gerencie seus dados pessoais e opções de segurança.</p>
+					</div>
+				</React.Fragment>
+			);	
+		}
 
-						<hr/>
-
-						<h2>Todas as Aulas</h2>
-					</section>
-		
-					<section id="my-tasks" className="my-tasks">
-						<h1>Suas Tarefas</h1>
-					</section>
-
-					<section id="my-subjects">
-						<h1>Suas Disciplinas</h1>
-					</section>
-				</div>
-
+		if (tab.view === "settings") {
+			return (
 				<div id="settings" className="settings-page">
-					<h1>
-						<i className="fa-solid fa-gear"></i>
-						<span>Configuração</span>
-					</h1>
-					<p>Personalize suas preferências, notificações e tema.</p>
+					<section>
+						<h1>Configurações</h1>
+					</section>
 				</div>
+			);
+		}
 
+		if (tab.view === "account") {
+			return (
 				<div id="account" className="account-page">
-					<h1>
-						<i className="fa-solid fa-user"></i>
-						<span>Conta</span>
-					</h1>
-					<p>Gerencie seus dados pessoais e opções de segurança.</p>
+					<section>
+						<div>
+							<h1>Configurações</h1>
+						</div>
+					</section>
 				</div>
-			</React.Fragment>
-		);
+			);
+		}
+
+		return null
 	}
 
 	return (
@@ -288,7 +368,7 @@ export default function App() {
 			</header>
 
 			<main className="tab-content">
-				{activeTab && renderActiveTabContent()}
+				{activeTab && renderActiveTabContent(activeTab)}
 			</main>
 		</div>
 	);
