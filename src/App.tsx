@@ -9,7 +9,7 @@ type Tab = {
 
 export default function App() {
 	const [tabs, setTabs] = useState<Tab[]>([
-		{ id: 1, title: "Página Inicial", iconClass: "fa-solid fa-house" },
+		{ id: 1, title: "Página Inicial", iconClass: "fa-solid fa-home" },
 	]);
 	const [activeTabId, setActiveTabId] = useState<number>(1);
 	const [draggedTabId, setDraggedTabId] = useState<number | null>(null);
@@ -46,7 +46,7 @@ export default function App() {
 		const newTab: Tab = {
 			id: Date.now(),
 			title: "Página Inicial",
-			iconClass: "fa-solid fa-house"
+			iconClass: "fa-solid fa-home"
 		};
 
 		setTabs((prev) => [...prev, newTab]);
@@ -261,7 +261,10 @@ export default function App() {
 									onDragOver={handleDragOver}
 									onDrop={() => handleDrop(tab.id)}
 								>
-									<span className="tab-title">{tab.title}</span>
+									<div className="tab-text">
+										<i className={tab.iconClass}></i>
+										<span className="tab-title">{tab.title}</span>
+									</div>
 									<span
 										className="close-tab"
 										title="Fechar aba"

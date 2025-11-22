@@ -279,7 +279,7 @@ header nav .tab-button {
 	align-items: center;
 	justify-content: space-between;
 	flex-direction: row;
-	width: 10rem;
+	width: 11rem;
 	height: 2.25rem;
 	padding: 0.5rem 0.75rem;
 	padding-bottom: 1rem;
@@ -289,6 +289,14 @@ header nav .tab-button {
 	color: var(--white);
 	transition: var(--default-color-transition), var(--default-size-transition), var(--default-spaces-transition);
 }
+
+header nav .tab-button .tab-text {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+header nav .tab-button .tab-text i { font-size: 0.9rem; }
 
 header nav .tab-button.active-tab {
 	background: var(--header-button-bg-color);
