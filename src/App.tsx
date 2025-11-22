@@ -286,22 +286,91 @@ export default function App() {
 							<h1>Configurações</h1>
 					</header>
 
-					<section className="customization-settings">
-						<div className="divider">
-							<i className="fa-solid fa-palette"></i>
-							<h6>Customização</h6>
-						</div>
-						<div>
-							<div>
-								<h6>Cor Principal</h6>
+					<aside>
+						<a href="#customization-settings">
+							Customização
+						</a>
+						<a href="#"></a>
+					</aside>
+
+					<section id="customization-settings" className="settings-group">
+						<div className="settings-example"></div>
+								
+						<div className="settings">
+							<div className="setting">
+								<div className="divider">
+									<i className="fa-solid fa-paintbrush"></i>
+									<h6>Tema</h6>
+								</div>
+								<div className="setting-select">
+									<div>
+										<div id="light-mode-example" className="setting-example">
+											<div className="example-screen">
+												<div className="example-tab-header">
+													<div className="example-tab-header-btn"></div>
+													<div className="example-tab-header-tab"></div>
+												</div>
+												<div className="example-tab-header-space"></div>
+												<div className="example-main">
+													<div className="example-main-emphasis">
+														<div className="example-main-emphasis-title"></div>
+														<div className="example-main-emphasis-p"></div>
+													</div>
+													<div>
+														<div className="example-main-title"></div>
+														<div className="example-main-p"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<h6>Tema Claro</h6>
+										<p>Melhora legibilidade, adequado para ambientes iluminados</p>
+										<button className="select-button">a</button>
+									</div>
+									<div>
+										<div id="dark-mode-example" className="setting-example">
+											<div className="example-screen">
+												<div className="example-tab-header">
+													<div className="example-tab-header-btn"></div>
+													<div className="example-tab-header-tab"></div>
+												</div>
+												<div className="example-tab-header-space"></div>
+												<div className="example-main">
+													<div className="example-main-emphasis">
+														<div className="example-main-emphasis-title"></div>
+														<div className="example-main-emphasis-p"></div>
+													</div>
+													<div>
+														<div className="example-main-title"></div>
+														<div className="example-main-p"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<h6>Tema Claro</h6>
+										<p>Reduz cansaço visual, adequado para ambientes escuros</p>
+										<button className="select-button">a</button>
+									</div>
+								</div>
 							</div>
-							<div>
-								<h6>Cor Secundária</h6>
+
+							<div className="setting">
+								<div className="divider">
+									<i className="fa-solid fa-palette"></i>
+									<h6>Cores</h6>
+								</div>
+								<div className="setting-select">
+									<h6>Cor Principal</h6>
+								</div>
+								<div>
+									<h6>Cor Secundária</h6>
+								</div>
 							</div>
 						</div>
+						
 					</section>
 					
-					<div className="color-selector">
+					<dialog className="color-selector">
 						<button className="red" style={{ backgroundColor: 'var(--red)' }}></button>
 						<button className="orange" style={{ backgroundColor: 'var(--orange)' }}></button>
 						<button className="yellow" style={{ backgroundColor: 'var(--yellow)' }}></button>
@@ -310,7 +379,7 @@ export default function App() {
 						<button className="blue" style={{ backgroundColor: 'var(--blue)' }}></button>
 						<button className="purple" style={{ backgroundColor: 'var(--purple)' }}></button>
 						<button className="pink" style={{ backgroundColor: 'var(--pink)' }}></button>
-					</div>
+					</dialog>
 				</div>
 			);
 		}

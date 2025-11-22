@@ -1,3 +1,10 @@
+:root {
+    /* Main - Aulas*/
+	--current-class-list-bg: var(--light);
+	--current-class-list-button-bg: var(--gray1);
+	--current-class-list-button-hover-bg: var(--gray3);
+}
+
 /* Media Queries */
 @media (max-width: 959px) {
 	.my-week .summary .current-previous-next-class {
@@ -218,5 +225,5 @@ footer nav .separator {
 	height: 2rem;
 	width: var(--separator-width);
 	border-radius: calc(var(--separator-width) / 2);
-	background-color: var(--light);
+	background: var(--light);
 }

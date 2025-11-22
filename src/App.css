@@ -30,6 +30,20 @@
 	--gray5: rgb(205, 205, 210);
 	--gray6: rgb(195, 195, 200);
 
+	--lgray1: rgb(245, 245, 250);
+	--lgray2: rgb(235, 235, 240);
+	--lgray3: rgb(225, 225, 230);
+	--lgray4: rgb(215, 215, 220);
+	--lgray5: rgb(205, 205, 210);
+	--lgray6: rgb(195, 195, 200);
+
+	--dgray1: rgb(10, 10, 15);
+	--dgray2: rgb(20, 20, 25);
+	--dgray3: rgb(30, 30, 35);
+	--dgray4: rgb(40, 40, 45);
+	--dgray5: rgb(50, 50, 55);
+	--dgray6: rgb(60, 60, 65);
+
 	--light: rgba(255, 255, 255, 0.15);
 	--shadow: rgba(0, 0, 0, 0.15);
 
@@ -56,14 +70,12 @@
 	--footer-nav-bg-color: var(--primary-emphasis);
 	--footer-nav-button-bg-color: var(--gray1);
 
-	/* Main - Aulas*/
-	--current-class-list-bg: var(--light);
-	--current-class-list-button-bg: var(--gray1);
-	--current-class-list-button-hover-bg: var(--gray3);
-
 	/* Section */
 	--minor-padding-section: 2.5rem;
 	--major-padding-section: 5rem;
+
+	/* Dialog */
+	--dialog-bg: var(--gray2);
 
 	/* Outros */
 	--header-footer-z-index: 9998;
@@ -157,6 +169,15 @@ hr {
 	margin-bottom: 1rem;
 	border: var(--border-width) solid var(--border-color);
 	border-radius: 0.1rem;
+}
+
+dialog {
+	background-color: var(--dialog-bg);
+	border: var(--border-width) solid var(--shadow);
+	outline: var(--separator-width) dashed var(--shadow);
+	outline-offset: -0.5rem;
+	padding: 1rem;
+	border-radius: 1rem;
 }
 
 body {
@@ -315,17 +336,19 @@ main {
     --w: 1px;     
     background: var(--gray1);
     background-image:
-      repeating-linear-gradient(
-        to bottom,
-        var(--gray4) 0 var(--w),
-        transparent var(--w) var(--s)
-      ),
-      repeating-linear-gradient(
-        to right,
-        var(--gray4) 0 var(--w),
-        transparent var(--w) var(--s)
-      );
+		repeating-linear-gradient(
+			to bottom,
+			var(--gray4) 0 var(--w),
+			transparent var(--w) var(--s)
+		),
+		repeating-linear-gradient(
+			to right,
+			var(--gray4) 0 var(--w),
+			transparent var(--w) var(--s)
+		);
+	background-position: var(--w);
     background-size: var(--s) var(--s);
+	border-top: var(--w) solid var(--gray4);
 }
 
 main > div {

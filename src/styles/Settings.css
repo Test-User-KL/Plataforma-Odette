@@ -1,3 +1,8 @@
+:root {
+    --setting-option-bg: var(--gray2);
+    --setting-option-bd: var(--gray5);
+    --example-bg: var(--gray1);
+}
 
 @media (max-width: 959px) {
     .settings-page header {
@@ -15,5 +20,259 @@
     .settings-page section {
         padding-left: calc(var(--major-padding-section) + 4rem);
     }
+    #customization-settings {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
 }
 
+.color-selector {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.color-selector button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border-radius: 50%;
+    box-shadow: none;
+}
+
+.settings-example {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--gray1);
+    border: var(--border-width) solid var(--gray6);
+    border-radius: 1rem;
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.setting {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.setting-select {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+    gap: 1rem;
+}
+
+.setting-select > div {
+    display: grid;
+    grid-template-areas:
+        'img img' 
+        'h6 btn'
+        'p btn'
+    ;
+    grid-template-columns: 1fr 2.5rem;
+    grid-template-rows: 10rem auto 1fr;
+    background: var(--setting-option-bg);
+    border: var(--border-width) solid var(--setting-option-bd);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.setting-select > div .setting-example { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-area: img; 
+    padding: 1rem;
+}
+
+.setting-select > div .setting-example .example-screen {
+    height: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 0.5rem;
+    box-shadow: var(--light-bs);
+    overflow: hidden;
+}
+
+.setting-select > div .setting-example .example-screen .example-tab-header {
+    height: 15px;
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    padding-left: 3px;
+    gap: 3px;
+    background: var(--primary-emphasis);
+}
+
+.setting-select > div .setting-example .example-screen .example-tab-header .example-tab-header-btn {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    width: 9px;
+    height: 9px;
+    border-radius: 3px;
+    background: var(--secondary-emphasis);
+    color: white;
+}
+
+.setting-select > div .setting-example .example-screen .example-tab-header .example-tab-header-tab {
+    height: 12px;
+    width: 40px;
+    border-radius: 3px 3px 0 0;
+}
+
+.setting-select > div .setting-example .example-screen .example-tab-header-space {
+    height: 7px;
+}
+
+.setting-select > div .setting-example .example-screen .example-main {
+    display: flex;
+    height: calc(100% - 24px);
+    gap: 8px;
+    padding: 8px;
+}
+
+.setting-select > div .setting-example .example-screen .example-main .example-main-emphasis {
+    width: 140px;
+    padding: 10px;
+    border-radius: 7px;
+    outline: 1px dashed var(--light);
+    outline-offset: -5px;
+    background: var(--primary-emphasis);
+    color: white;
+}
+
+.setting-select > div .setting-example .example-screen .example-main .example-main-emphasis .example-main-emphasis-title { 
+    height: 10px;
+    width: 30px;
+    background: var(--white);
+    opacity: 0.6;
+}
+.setting-select > div .setting-example .example-screen .example-main .example-main-emphasis-p { 
+    height: 55px;
+    margin-top: 2px;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        white 0 1px,
+        transparent 1px 3px
+	);
+    opacity: 0.6;
+}
+
+.setting-select > div .setting-example .example-screen .example-main .example-main-title {
+    height: 10px;
+    width: 30px;
+    margin-top: 8px;
+    opacity: 0.8;
+}
+
+.setting-select > div .setting-example .example-screen .example-main .example-main-p {
+    height: 55px;
+    width: 60px;
+    margin-top: 2px;
+    opacity: 0.8;
+}
+
+#light-mode-example { background: var(--lgray1); }
+#light-mode-example .example-screen { 
+    background: var(--lgray1); 
+    --s: 10px;       
+    --w: 0.75px;     
+    background-image:
+		repeating-linear-gradient(
+			to bottom,
+			var(--lgray4) 0 var(--w),
+			transparent var(--w) var(--s)
+		),
+		repeating-linear-gradient(
+			to right,
+			var(--lgray4) 0 var(--w),
+			transparent var(--w) var(--s)
+		);
+    background-size: var(--s) var(--s);
+    border: var(--border-width) solid var(--lgray6);
+}
+#light-mode-example .example-screen .example-tab-header .example-tab-header-tab,
+#light-mode-example .example-screen .example-tab-header-space {
+    background-color: var(--lgray1);
+}
+
+#light-mode-example .example-screen .example-tab-header-space {
+    border-bottom: 0.75px solid var(--lgray4);
+}
+
+#light-mode-example .example-screen .example-main .example-main-title { background: black; }
+#light-mode-example .example-screen .example-main .example-main-p {
+    background-image: repeating-linear-gradient(
+        to bottom,
+        black 0 1px,
+        transparent 1px 3px
+	);
+}
+
+#dark-mode-example { background: var(--dgray1); }
+#dark-mode-example .example-screen { 
+    background: var(--dgray1); 
+    --s: 10px;       
+    --w: 0.75px;     
+    background-image:
+		repeating-linear-gradient(
+			to bottom,
+			var(--dgray4) 0 var(--w),
+			transparent var(--w) var(--s)
+		),
+		repeating-linear-gradient(
+			to right,
+			var(--dgray4) 0 var(--w),
+			transparent var(--w) var(--s)
+		);
+    background-size: var(--s) var(--s);
+    border: var(--border-width) solid var(--lgray6);
+}
+#dark-mode-example .example-screen .example-tab-header .example-tab-header-tab,
+#dark-mode-example .example-screen .example-tab-header-space {
+    background-color: var(--dgray1);
+}
+
+#dark-mode-example .example-screen .example-tab-header-space {
+    border-bottom: 0.75px solid var(--dgray4);
+}
+
+#dark-mode-example .example-screen .example-main .example-main-title { background: white; }
+#dark-mode-example .example-screen .example-main .example-main-p {
+    background-image: repeating-linear-gradient(
+        to bottom,
+        white 0 1px,
+        transparent 1px 3px
+	);
+}
+
+.setting-select > div h6 { 
+    grid-area: h6;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.setting-select > div p { 
+    grid-area: p; 
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.setting-select > div button { 
+    grid-area: btn; 
+    align-self: center;
+    justify-self: center;
+    height: 1.5rem;
+    width: 1.5rem;
+    padding: 0;
+    border-radius: 50%;
+    outline: none;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
