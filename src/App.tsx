@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
+import "./styles/Home.css";
 
 type TabView = "home" | "settings" | "account";
 
@@ -201,7 +202,7 @@ export default function App() {
 								<div className="current-previous-next-class">
 									<div className="current-class">
 										<div className="texts">
-											<p>Atual - Disciplina:</p>
+											<p>Atual (Disciplina - Professor):</p>
 											<h2>Tema da Aula</h2>
 										</div>
 										<div  className="files">
@@ -263,22 +264,6 @@ export default function App() {
 							<h1>Suas Disciplinas</h1>
 						</section>
 					</div>
-	
-					<div id="settings" className="settings-page">
-						<h1>
-							<i className="fa-solid fa-gear"></i>
-							<span>Configuração</span>
-						</h1>
-						<p>Personalize suas preferências, notificações e tema.</p>
-					</div>
-	
-					<div id="account" className="account-page">
-						<h1>
-							<i className="fa-solid fa-user"></i>
-							<span>Conta</span>
-						</h1>
-						<p>Gerencie seus dados pessoais e opções de segurança.</p>
-					</div>
 				</React.Fragment>
 			);	
 		}
@@ -287,7 +272,19 @@ export default function App() {
 			return (
 				<div id="settings" className="settings-page">
 					<section>
-						<h1>Configurações</h1>
+						<div className="tab-content-title">
+							<a 
+								className="back-btn"
+								href="#home"
+								onClick={(e) => {
+									e.preventDefault();
+									changeTab("home");
+								}}
+							>
+								<i className="fa-solid fa-arrow-left"></i>
+							</a>
+							<h1>Configurações</h1>
+						</div>
 					</section>
 				</div>
 			);
