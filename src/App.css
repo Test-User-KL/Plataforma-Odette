@@ -21,13 +21,6 @@
 	--gray5: rgb(205, 205, 210);
 	--gray6: rgb(195, 195, 200);
 
-	--tgray1: rgba(245, 245, 250, 0.8);
-	--tgray2: rgba(235, 235, 240, 0.8);
-	--tgray3: rgba(225, 225, 230, 0.8);
-	--tgray4: rgba(215, 215, 220, 0.8);
-	--tgray5: rgba(205, 205, 210, 0.8);
-	--tgray6: rgba(195, 195, 200, 0.8);
-
 	--light: rgba(255, 255, 255, 0.15);
 	--shadow: rgba(0, 0, 0, 0.15);
 
@@ -169,19 +162,6 @@ body {
 	footer {
 		left: 50% !important;
 		transform: translateX(-50%);
-	}
-
-	footer nav a span {
-		opacity: 0;
-		visibility: hidden;
-		width: 0;
-
-	}
-
-	footer nav :is(a:hover, a.active) span {
-		opacity: 1;
-		visibility: visible;
-		width: auto;
 	}
 }
 

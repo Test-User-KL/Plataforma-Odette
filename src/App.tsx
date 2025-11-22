@@ -121,10 +121,6 @@ export default function App() {
 								<i className="fa-solid fa-clipboard-list"></i>
 								<span>Tarefas</span>
 							</a>
-							<a href="#my-calendar">
-								<i className="fa-regular fa-calendar"></i>
-								<span>Calendário</span>
-							</a>
 							<a href="#my-subjects">
 								<i className="fa-solid fa-graduation-cap"></i>
 								<span>Disciplinas</span>
