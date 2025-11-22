@@ -79,8 +79,6 @@ export default function App() {
 
 	const activeTab = tabs.find((t) => t.id === activeTabId);
 
-	function openNotebook() {}
-
 	function renderActiveTabContent() {
 		let fadeOrder = 0;
 		const nextFadeStyle = (): React.CSSProperties =>
