@@ -218,7 +218,7 @@ body {
 }
   
 /* Header */
-header {
+.tab-header {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -233,7 +233,7 @@ header {
 	z-index: var(--header-footer-z-index);
 }
 
-header::after {
+.tab-header::after {
 	content: '';
 	width: 100%;
 	height: 2rem;
@@ -248,11 +248,11 @@ header::after {
 	z-index: 9998;
 }
 
-header :is(#new-tab, .tab-button.active-tab) {
+.tab-header :is(#new-tab, .tab-button.active-tab) {
 	border: none;
 }
 
-header #new-tab {
+.tab-header #new-tab {
 	padding: 0;
 	height: 1.75rem;
 	width: 1.75rem;
@@ -264,7 +264,7 @@ header #new-tab {
 	outline: none;
 }
 
-header nav {
+.tab-header nav {
 	display: flex;
 	flex-direction: row;
 	align-items: end;
@@ -274,11 +274,11 @@ header nav {
 	overflow-x: auto;
 }
 
-header nav::-webkit-scrollbar {
+.tab-header nav::-webkit-scrollbar {
 	display: none;
 }
 
-header nav .tab-button {
+.tab-header nav .tab-button {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -294,22 +294,22 @@ header nav .tab-button {
 	transition: var(--default-color-transition), var(--default-size-transition), var(--default-spaces-transition);
 }
 
-header nav .tab-button .tab-text {
+.tab-header nav .tab-button .tab-text {
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
 }
 
-header nav .tab-button .tab-text i { font-size: 0.9rem; }
+.tab-header nav .tab-button .tab-text i { font-size: 0.9rem; }
 
-header nav .tab-button.active-tab {
+.tab-header nav .tab-button.active-tab {
 	background: var(--header-button-bg-color);
 	padding-bottom: 0.5rem;
 	box-shadow: var(--light-bs);
 	color: var(--fc);
 }
 
-header nav .tab-button .tab-title {
+.tab-header nav .tab-button .tab-title {
 	font-size: 0.95rem;
 }
 
@@ -355,6 +355,13 @@ main section {
 	gap: 1rem;
 }
 
+.tab-content-title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
 .tab-content-title a {
 	display: flex;
 	align-items: center;
@@ -371,7 +378,9 @@ main section {
 	text-decoration: none;
 	transition: var(--default-color-transition);
 }
+
 .tab-content-title a:hover {
 	background-color: var(--button-bg-hover-color);
 }
+
 .tab-content-title h1 { width: 100%; }

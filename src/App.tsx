@@ -271,8 +271,8 @@ export default function App() {
 		if (tab.view === "settings") {
 			return (
 				<div id="settings" className="settings-page">
-					<section>
-						<div className="tab-content-title">
+					<section className="tab-content-header">
+						<header className="tab-content-title">
 							<a 
 								className="back-btn"
 								href="#home"
@@ -284,7 +284,11 @@ export default function App() {
 								<i className="fa-solid fa-arrow-left"></i>
 							</a>
 							<h1>Configurações</h1>
-						</div>
+						</header>
+					</section>
+
+					<section>
+
 					</section>
 				</div>
 			);

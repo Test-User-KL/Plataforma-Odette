@@ -169,10 +169,5 @@ footer nav .separator {
 	background-color: var(--light);
 }
 
-.tab-content-title {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    gap: 1rem;
-}
+
 
