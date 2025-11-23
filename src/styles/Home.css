@@ -85,11 +85,8 @@
 	height: fit-content;
 }
 
-.my-week .summary .current-previous-next-class .current-class { grid-area: current; }
-.my-week .summary .current-previous-next-class .previous-class { grid-area: previous; }
-.my-week .summary .current-previous-next-class .next-class { grid-area: next; }
-
 .my-week .summary .current-previous-next-class .current-class {
+	grid-area: current;
 	height: fit-content;
 	padding: 2rem;
 	background: var(--primary-emphasis);
@@ -100,6 +97,15 @@
 	border-radius: 1.25rem;	
 	color: var(--white);
 }
+
+.my-week .summary .current-previous-next-class .current-class :is(p, h2, h6) {
+	color: var(--white);
+}
+
+.my-week .summary .current-previous-next-class .previous-class { grid-area: previous; }
+.my-week .summary .current-previous-next-class .next-class { grid-area: next; }
+
+
 
 .my-week .summary .current-previous-next-class .current-class .texts { 
 	grid-area: texts; 
@@ -209,6 +215,10 @@ footer nav a {
 	text-decoration: none;
 	font-size: var(--default-fs);
 	transition: var(--default-color-transition);
+}
+
+footer nav a:not(.active) * {
+	color: var(--white);
 }
 
 footer nav a:hover {

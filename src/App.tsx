@@ -12,6 +12,9 @@ type Tab = {
 	view: TabView;
 };
 
+type ThemeMode = "light" | "dark";
+type ColorTarget = "primary" | "secondary" | null;
+
 export default function App() {
 	const [tabs, setTabs] = useState<Tab[]>([
 		{ 
@@ -23,7 +26,80 @@ export default function App() {
 	]);
 	const [activeTabId, setActiveTabId] = useState<number>(1);
 	const [draggedTabId, setDraggedTabId] = useState<number | null>(null);
+	const [theme, setTheme] = useState<ThemeMode>("light");
+	const [primaryColor, setPrimaryColor] = useState<string>("blue");
+	const [secondaryColor, setSecondaryColor] = useState<string>("orange");
+	const [colorTarget, setColorTarget] = useState<ColorTarget>(null);
 	const appRef = useRef<HTMLDivElement>(null);
+	const colorDialogRef = useRef<HTMLDialogElement>(null);
+
+	function applyThemeVariables(selectedTheme: ThemeMode) {
+		const root = document.documentElement;
+		const grayPrefix = selectedTheme === "light" ? "l" : "d";
+
+		root.style.setProperty("--gray1", `var(--${grayPrefix}gray1)`);
+		root.style.setProperty("--gray2", `var(--${grayPrefix}gray2)`);
+		root.style.setProperty("--gray3", `var(--${grayPrefix}gray3)`);
+		root.style.setProperty("--gray4", `var(--${grayPrefix}gray4)`);
+		root.style.setProperty("--gray5", `var(--${grayPrefix}gray5)`);
+		root.style.setProperty("--gray6", `var(--${grayPrefix}gray6)`);
+
+		if (selectedTheme === "dark") {
+			root.style.setProperty("--default-primary-fc", "rgb(240, 240, 245)");
+			root.style.setProperty("--default-secondary-fc", "rgb(200, 200, 205)");
+			root.style.setProperty("--example-bg", "var(--dgray1)");
+			root.style.setProperty("--setting-option-bg", "var(--dgray2)");
+		} else {
+			root.style.setProperty("--default-primary-fc", "rgb(0, 0, 0)");
+			root.style.setProperty("--default-secondary-fc", "rgb(150, 150, 150)");
+			root.style.setProperty("--example-bg", "var(--lgray1)");
+			root.style.setProperty("--setting-option-bg", "var(--lgray2)");
+		}
+	}
+
+	function applyColorVariables(colorKey: string, target: "primary" | "secondary") {
+			const root = document.documentElement;
+			const colorValue = getComputedStyle(root).getPropertyValue(`--${colorKey}`).trim();
+
+			if (!colorValue) return;
+
+			if (target === "primary") {
+					root.style.setProperty("--primary-emphasis", colorValue);
+					root.style.setProperty("--light-primary-emphasis", colorValue);
+			} else {
+					root.style.setProperty("--secondary-emphasis", colorValue);
+					root.style.setProperty("--light-secondary-emphasis", colorValue);
+			}
+	}
+
+	function handleThemeChange(selectedTheme: ThemeMode) {
+		setTheme(selectedTheme);
+		applyThemeVariables(selectedTheme);
+	}
+
+	function openColorSelector(target: ColorTarget) {
+		setColorTarget(target);
+		colorDialogRef.current?.showModal();
+	}
+
+	function closeColorSelector() {
+		colorDialogRef.current?.close();
+		setColorTarget(null);
+	}
+
+	function handleColorPick(colorKey: string) {
+			if (!colorTarget) return;
+
+			applyColorVariables(colorKey, colorTarget);
+
+			if (colorTarget === "primary") {
+					setPrimaryColor(colorKey);
+			} else {
+					setSecondaryColor(colorKey);
+			}
+
+			closeColorSelector();
+	}
 
 	useEffect(() => {
 		if (!appRef.current) return;
@@ -51,6 +127,12 @@ export default function App() {
 			});
 		});
 	}, [activeTabId, tabs]);
+
+	useEffect(() => {
+		applyThemeVariables(theme);
+		applyColorVariables(primaryColor, "primary");
+		applyColorVariables(secondaryColor, "secondary");
+	}, [theme, primaryColor, secondaryColor]);
 
 	function handleNewTab() {
 		const newTab: Tab = {
@@ -294,8 +376,6 @@ export default function App() {
 					</aside>
 
 					<section id="customization-settings" className="settings-group">
-						<div className="settings-example"></div>
-								
 						<div className="settings">
 							<div className="setting">
 								<div className="divider">
@@ -328,7 +408,10 @@ export default function App() {
 											Tema Claro
 										</h6>
 										<p>Melhora legibilidade, adequado para ambientes iluminados</p>
-										<button className="select-button">
+										<button
+											className={`select-button ${theme === "light" ? "active" : ""}`}
+											onClick={() => handleThemeChange("light")}
+										>
 											<i className="fa-solid fa-check"></i>
 										</button>
 									</div>
@@ -357,7 +440,10 @@ export default function App() {
 											Tema Escuro
 										</h6>
 										<p>Reduz cansaço visual, adequado para ambientes escuros</p>
-										<button className="select-button">
+										<button
+											className={`select-button ${theme === "dark" ? "active" : ""}`}
+											onClick={() => handleThemeChange("dark")}
+										>
 											<i className="fa-solid fa-check"></i>
 										</button>
 									</div>
@@ -371,26 +457,38 @@ export default function App() {
 								</div>
 								<div className="setting-select">
 									<h6>Cor Principal</h6>
-									<button onClick={(e) => {selectMainColor()}}></button> {/* Abre o seletor de cores*/}
+									<button
+										className="select-button"
+										onClick={() => openColorSelector("primary")}
+										style={{ background: `var(--${primaryColor})` }}
+									>
+										<i className="fa-solid fa-droplet"></i>
+									</button>
 								</div>
 								<div>
 									<h6>Cor Secundária</h6>
-									<button onClick={(e) => {selectSecondaryColor()}}></button> {/* Abre o seletor de cores*/}
+									<button
+										className="select-button"
+										onClick={() => openColorSelector("secondary")}
+										style={{ background: `var(--${secondaryColor})` }}
+									>
+										<i className="fa-solid fa-droplet"></i>
+									</button>
 								</div>
 							</div>
 						</div>
-						
 					</section>
-					
-					<dialog className="color-selector">
-						<button className="red" style={{ backgroundColor: 'var(--red)' }}></button>
-						<button className="orange" style={{ backgroundColor: 'var(--orange)' }}></button>
-						<button className="yellow" style={{ backgroundColor: 'var(--yellow)' }}></button>
-						<button className="green" style={{ backgroundColor: 'var(--green)' }}></button>
-						<button className="turquoise" style={{ backgroundColor: 'var(--turquoise)' }}></button>
-						<button className="blue" style={{ backgroundColor: 'var(--blue)' }}></button>
-						<button className="purple" style={{ backgroundColor: 'var(--purple)' }}></button>
-						<button className="pink" style={{ backgroundColor: 'var(--pink)' }}></button>
+
+					<dialog className="color-selector" ref={colorDialogRef}>
+						<button className="red" style={{ backgroundColor: 'var(--red)' }} onClick={() => handleColorPick("red")}></button>
+						<button className="orange" style={{ backgroundColor: 'var(--orange)' }} onClick={() => handleColorPick("orange")}></button>
+						<button className="yellow" style={{ backgroundColor: 'var(--yellow)' }} onClick={() => handleColorPick("yellow")}></button>
+						<button className="green" style={{ backgroundColor: 'var(--green)' }} onClick={() => handleColorPick("green")}></button>
+						<button className="turquoise" style={{ backgroundColor: 'var(--turquoise)' }} onClick={() => handleColorPick("turquoise")}></button>
+						<button className="blue" style={{ backgroundColor: 'var(--blue)' }} onClick={() => handleColorPick("blue")}></button>
+						<button className="purple" style={{ backgroundColor: 'var(--purple)' }} onClick={() => handleColorPick("purple")}></button>
+						<button className="pink" style={{ backgroundColor: 'var(--pink)' }} onClick={() => handleColorPick("pink")}></button>
+						<button className="close-dialog-btn" onClick={closeColorSelector}><i className="fa-solid fa-times"></i></button>
 					</dialog>
 				</div>
 			);

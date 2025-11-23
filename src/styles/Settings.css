@@ -28,21 +28,13 @@
     gap: 0.5rem;
 }
 
-.color-selector button {
+.color-selector button:not(:last-child) {
     display: flex;
     align-items: center;
     justify-content: center;
     outline: none;
     border-radius: 50%;
     box-shadow: none;
-}
-
-.settings-example {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: var(--gray1);
-    border: var(--border-width) solid var(--gray6);
-    border-radius: 1rem;
 }
 
 .settings {
