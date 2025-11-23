@@ -17,9 +17,9 @@ type ColorTarget = "primary" | "secondary" | null;
 
 export default function App() {
 	const [tabs, setTabs] = useState<Tab[]>([
-		{ 
-			id: 1, 
-			title: "Página Inicial", 
+		{
+			id: 1,
+			title: "Página Inicial",
 			iconClass: "fa-solid fa-home",
 			view: "home"
 		},
@@ -31,6 +31,29 @@ export default function App() {
 	const [secondaryColor, setSecondaryColor] = useState<string>("yellow");
 	const [colorTarget, setColorTarget] = useState<ColorTarget>(null);
 	const appRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		const savedSettings = localStorage.getItem("settings");
+		if (!savedSettings) return;
+
+		const parsed = JSON.parse(savedSettings) as Partial<{
+			theme: ThemeMode;
+			primaryColor: string;
+			secondaryColor: string;
+		}>;
+
+		if (parsed.theme === "light" || parsed.theme === "dark") {
+			setTheme(parsed.theme);
+		}
+
+		if (typeof parsed.primaryColor === "string") {
+			setPrimaryColor(parsed.primaryColor);
+		}
+
+		if (typeof parsed.secondaryColor === "string") {
+			setSecondaryColor(parsed.secondaryColor);
+		}
+	}, []);
 
 	function applyThemeVariables(selectedTheme: ThemeMode) {
 		const root = document.documentElement;
@@ -63,11 +86,11 @@ export default function App() {
 			if (!colorValue) return;
 
 			if (target === "primary") {
-					root.style.setProperty("--primary-emphasis", colorValue);
-					root.style.setProperty("--light-primary-emphasis", colorValue);
+				root.style.setProperty("--primary-emphasis", colorValue);
+				root.style.setProperty("--light-primary-emphasis", colorValue);
 			} else {
-					root.style.setProperty("--secondary-emphasis", colorValue);
-					root.style.setProperty("--light-secondary-emphasis", colorValue);
+				root.style.setProperty("--secondary-emphasis", colorValue);
+				root.style.setProperty("--light-secondary-emphasis", colorValue);
 			}
 	}
 
@@ -127,9 +150,19 @@ export default function App() {
 
 	useEffect(() => {
 		applyThemeVariables(theme);
-		applyColorVariables(primaryColor, "primary");
-		applyColorVariables(secondaryColor, "secondary");
-	}, [theme, primaryColor, secondaryColor]);
+			applyColorVariables(primaryColor, "primary");
+            applyColorVariables(secondaryColor, "secondary");
+        }, [theme, primaryColor, secondaryColor]);
+
+        useEffect(() => {
+			const settings = {
+				theme,
+				primaryColor,
+				secondaryColor,
+			};
+
+			localStorage.setItem("settings", JSON.stringify(settings));
+    	}, [theme, primaryColor, secondaryColor]);
 
 	function handleNewTab() {
 		const newTab: Tab = {

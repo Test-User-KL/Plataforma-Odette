@@ -20,27 +20,9 @@
 }
 
 .color-selector {
-    display: flex;
     align-items: center;
-    position: fixed;
-    left: 50%;
-    top: 50%;
     width: fit-content;
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, -50%) scale(1);
-    transform-origin: center bottom;
-    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
-    pointer-events: auto;
     text-align: center;
-}
-
-.color-selector.is-closed {
-    opacity: 0;
-    visibility: hidden;
-    transform: translate(-50%, -50%) scale(0.95);
-    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
-    pointer-events: none;
 }
 
 .color-selector .dialog-select {
@@ -275,10 +257,6 @@
     margin-bottom: 1rem;
 }
 
-.light-dark-mode-setting .select-button i {
-    color: var(--select-button-bg);
-}
-
 .select-button {
     grid-area: btn; 
     align-self: center;
@@ -303,9 +281,15 @@
 
 .select-button i {
     color: var(--white);
-    opacity: 0;
+    opacity: 0 !important;
+    transition: var(--default-opacity-in-transition);
 }
 .select-button.active {
     background-color: var(--select-button-active-bg);
     border-color: var(--select-button-active-bg);
+}
+
+.select-button.active i {
+    opacity: 1 !important;
+    transition: var(--default-opacity-out-transition);
 }

@@ -97,6 +97,8 @@
 	--default-size-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, scale 0.3s ease-in-out, transform 0.3s ease-in-out;
 	--default-spaces-transition: margin 0.3s ease-in-out, padding 0.3s ease-in-out, gap 0.3s ease-in-out;
 	--default-height-transition: height 0.3s ease-in-out;
+	--default-opacity-in-transition: opacity 0.3s ease-in-out, visibility 0s, scale 0.3s;
+	--default-opacity-out-transition: opacity 0.3s ease-in-out, visibility 0s 0.3s, scale 0.3s;
 }
 
 /* Geral */
@@ -176,18 +178,36 @@ hr {
 dialog {
 	display: flex;
 	flex-direction: column;
+	position: fixed;
 	background-color: var(--dialog-bg);
 	border: var(--border-width) solid var(--dialog-bd);
 	outline: var(--separator-width) dashed var(--dialog-bd);
 	outline-offset: -0.5rem;
-	padding: 1rem;
+	padding: 1.25rem;
 	border-radius: 1rem;
+	left: 50%;
+	top: 50%;
+	opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+	transform-origin: center bottom;
+	transition: transform 0.3s ease-in-out, var(--default-opacity-in-transition);
+	box-shadow: var(--default-bs);
+	pointer-events: auto;
+}
+
+dialog.is-closed {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) scale(0.95);
+    transition: transform 0.3s ease-in-out, var(--default-opacity-out-transition);
+    pointer-events: none;
 }
 
 dialog .dialog-select {
 	display: flex;
 	flex-direction: row;
-	gap: 0.3rem;
+	gap: 0.5rem;
 }
 
 .close-dialog-btn {
