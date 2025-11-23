@@ -26,6 +26,8 @@
 .color-selector {
     display: flex;
     gap: 0.5rem;
+    position: absolute;
+    width: fit-content;
 }
 
 .color-selector button:not(:last-child) {
