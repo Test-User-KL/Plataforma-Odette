@@ -28,7 +28,7 @@ export default function App() {
 	const [draggedTabId, setDraggedTabId] = useState<number | null>(null);
 	const [theme, setTheme] = useState<ThemeMode>("light");
 	const [primaryColor, setPrimaryColor] = useState<string>("blue");
-	const [secondaryColor, setSecondaryColor] = useState<string>("orange");
+	const [secondaryColor, setSecondaryColor] = useState<string>("yellow");
 	const [colorTarget, setColorTarget] = useState<ColorTarget>(null);
 	const appRef = useRef<HTMLDivElement>(null);
 
@@ -455,7 +455,6 @@ export default function App() {
 											onClick={() => openColorSelector("primary")}
 											style={{ background: `var(--${primaryColor})` }}
 										>
-											<i className="fa-solid fa-droplet"></i>
 										</button>
 									</div>
 									<div>
@@ -467,7 +466,6 @@ export default function App() {
 											onClick={() => openColorSelector("secondary")}
 											style={{ background: `var(--${secondaryColor})` }}
 										>
-											<i className="fa-solid fa-droplet"></i>
 										</button>
 									</div>
 								</div>
@@ -476,18 +474,22 @@ export default function App() {
 					</section>
 
 					<dialog 
-						className={`color-selector ${colorTarget ? "is-open": ""}`}
+						className={`color-selector ${colorTarget ? "": "is-closed"}`}
 						aria-hidden={!colorTarget}
 					>
-						<button className="red" style={{ backgroundColor: 'var(--red)' }} onClick={() => handleColorPick("red")}></button>
-						<button className="orange" style={{ backgroundColor: 'var(--orange)' }} onClick={() => handleColorPick("orange")}></button>
-						<button className="yellow" style={{ backgroundColor: 'var(--yellow)' }} onClick={() => handleColorPick("yellow")}></button>
-						<button className="green" style={{ backgroundColor: 'var(--green)' }} onClick={() => handleColorPick("green")}></button>
-						<button className="turquoise" style={{ backgroundColor: 'var(--turquoise)' }} onClick={() => handleColorPick("turquoise")}></button>
-						<button className="blue" style={{ backgroundColor: 'var(--blue)' }} onClick={() => handleColorPick("blue")}></button>
-						<button className="purple" style={{ backgroundColor: 'var(--purple)' }} onClick={() => handleColorPick("purple")}></button>
-						<button className="pink" style={{ backgroundColor: 'var(--pink)' }} onClick={() => handleColorPick("pink")}></button>
-						<button className="close-dialog-btn" onClick={closeColorSelector}><i className="fa-solid fa-times"></i></button>
+						<h3>Seleção de Cor</h3>
+						<p><span style={{fontWeight: "bold"}}>Dica</span>: utilize cores diferentes para um melhor contraste.</p>
+						<div className="dialog-select">
+							<button className="red" style={{ backgroundColor: 'var(--red)' }} onClick={() => handleColorPick("red")}></button>
+							<button className="orange" style={{ backgroundColor: 'var(--orange)' }} onClick={() => handleColorPick("orange")}></button>
+							<button className="yellow" style={{ backgroundColor: 'var(--yellow)' }} onClick={() => handleColorPick("yellow")}></button>
+							<button className="green" style={{ backgroundColor: 'var(--green)' }} onClick={() => handleColorPick("green")}></button>
+							<button className="turquoise" style={{ backgroundColor: 'var(--turquoise)' }} onClick={() => handleColorPick("turquoise")}></button>
+							<button className="blue" style={{ backgroundColor: 'var(--blue)' }} onClick={() => handleColorPick("blue")}></button>
+							<button className="purple" style={{ backgroundColor: 'var(--purple)' }} onClick={() => handleColorPick("purple")}></button>
+							<button className="pink" style={{ backgroundColor: 'var(--pink)' }} onClick={() => handleColorPick("pink")}></button>
+							<button className="close-dialog-btn" onClick={closeColorSelector}><i className="fa-solid fa-times"></i></button>
+						</div>	
 					</dialog>
 				</div>
 			);

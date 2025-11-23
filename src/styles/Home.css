@@ -3,11 +3,12 @@
 	--current-class-list-bg: var(--light);
 	--current-class-list-button-bg: var(--gray1);
 	--current-class-list-button-hover-bg: var(--gray3);
-	--previous-next-class-bg: var(--gray3);
+	--previous-next-class-bg: var(--gray2);
+	--previous-next-class-bd: var(--gray4);
 }
 
 /* Media Queries */
-@media (max-width: 959px) {
+@media (max-width: 999px) {
 	.my-week .summary .current-previous-next-class {
 		grid-template-areas: 
 			'current current'
@@ -25,6 +26,7 @@
 
 	.my-week .summary .current-previous-next-class .current-class .shortcuts .shortcuts-list button {
 		flex-direction: column;
+		height: 5.5rem !important;
 	}
 
 	.my-week .summary .current-previous-next-class .current-class .shortcuts .shortcuts-list button i {
@@ -32,13 +34,13 @@
 	}
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1000px) {
 	.my-week .summary .current-previous-next-class {
 		grid-template-areas: 
 			'current previous'
 			'current next'
 		;
-		grid-template-columns: 1fr 10rem;
+		grid-template-columns: 1fr 12.5rem;
 		grid-template-rows: calc(50% - 0.5rem) calc(50% - 0.5rem);
 	}
 
@@ -107,7 +109,6 @@
 .my-week .summary .current-previous-next-class .next-class { grid-area: next; }
 
 
-
 .my-week .summary .current-previous-next-class .current-class .texts { 
 	grid-area: texts; 
 	height: fit-content;
@@ -171,7 +172,11 @@
 	align-items: center;
 	justify-content: center;
 	padding: 1rem;
-	background: var(--shadow);
+	background: var(--previous-next-class-bg);
+	border: var(--border-width) solid var(--previous-next-class-bd);
+	outline: var(--separator-width) dashed var(--previous-next-class-bd);
+	outline-offset: -0.75rem;
+	box-shadow: var(--light-bs);
 	border-radius: 1.25rem;
 }
 
