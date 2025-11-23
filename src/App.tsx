@@ -31,7 +31,6 @@ export default function App() {
 	const [secondaryColor, setSecondaryColor] = useState<string>("orange");
 	const [colorTarget, setColorTarget] = useState<ColorTarget>(null);
 	const appRef = useRef<HTMLDivElement>(null);
-	const colorDialogRef = useRef<HTMLDialogElement>(null);
 
 	function applyThemeVariables(selectedTheme: ThemeMode) {
 		const root = document.documentElement;
@@ -79,11 +78,9 @@ export default function App() {
 
 	function openColorSelector(target: ColorTarget) {
 		setColorTarget(target);
-		colorDialogRef.current?.showModal();
 	}
 
 	function closeColorSelector() {
-		colorDialogRef.current?.close();
 		setColorTarget(null);
 	}
 
@@ -368,13 +365,6 @@ export default function App() {
 							<h1>Configurações</h1>
 					</header>
 
-					<aside>
-						<a href="#customization-settings">
-							Customização
-						</a>
-						<a href="#"></a>
-					</aside>
-
 					<section id="customization-settings" className="settings-group">
 						<div className="settings">
 							<div className="setting">
@@ -456,30 +446,39 @@ export default function App() {
 									<h6>Cores</h6>
 								</div>
 								<div className="setting-select">
-									<h6>Cor Principal</h6>
-									<button
-										className="select-button"
-										onClick={() => openColorSelector("primary")}
-										style={{ background: `var(--${primaryColor})` }}
-									>
-										<i className="fa-solid fa-droplet"></i>
-									</button>
-								</div>
-								<div>
-									<h6>Cor Secundária</h6>
-									<button
-										className="select-button"
-										onClick={() => openColorSelector("secondary")}
-										style={{ background: `var(--${secondaryColor})` }}
-									>
-										<i className="fa-solid fa-droplet"></i>
-									</button>
+									<div>
+										<div className="setting-example" style={{ backgroundColor: 'var(--primary-emphasis)' }}></div>
+										<h6>Cor Principal</h6>
+										<p>Selecione a <span style={{ color: 'var(--primary-emphasis)', fontWeight: 'bold' }}>cor principal</span> no botão ao lado</p>
+										<button
+											className="select-button"
+											onClick={() => openColorSelector("primary")}
+											style={{ background: `var(--${primaryColor})` }}
+										>
+											<i className="fa-solid fa-droplet"></i>
+										</button>
+									</div>
+									<div>
+										<div className="setting-example" style={{ backgroundColor: 'var(--secondary-emphasis)' }}></div>
+										<h6>Cor Secundária</h6>
+										<p>Selecione a <span style={{ color: 'var(--secondary-emphasis)', fontWeight: 'bold' }}>cor secundária</span> no botão ao lado</p>
+										<button
+											className="select-button"
+											onClick={() => openColorSelector("secondary")}
+											style={{ background: `var(--${secondaryColor})` }}
+										>
+											<i className="fa-solid fa-droplet"></i>
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>
 					</section>
 
-					<dialog className="color-selector" ref={colorDialogRef}>
+					<dialog 
+						className={`color-selector ${colorTarget ? "is-open": ""}`}
+						aria-hidden={!colorTarget}
+					>
 						<button className="red" style={{ backgroundColor: 'var(--red)' }} onClick={() => handleColorPick("red")}></button>
 						<button className="orange" style={{ backgroundColor: 'var(--orange)' }} onClick={() => handleColorPick("orange")}></button>
 						<button className="yellow" style={{ backgroundColor: 'var(--yellow)' }} onClick={() => handleColorPick("yellow")}></button>

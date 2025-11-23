@@ -17,10 +17,6 @@
     .settings-page header {
         padding: 0 var(--major-padding-section);
     }
-    #customization-settings {
-        display: grid;
-        grid-template-columns: 50% 50%;
-    }
 }
 
 .color-selector {
@@ -28,6 +24,19 @@
     gap: 0.5rem;
     position: absolute;
     width: fit-content;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95);
+    transition: opacity 200ms ease, transform 200ms ease, visibility 0s linear 200ms;
+    pointer-events: none;
+}
+
+.color-selector.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    transition: opacity 200ms ease, transform 200ms ease, visibility 0s;
+    pointer-events: auto;
 }
 
 .color-selector button:not(:last-child) {
