@@ -32,6 +32,40 @@ export default function App() {
 	const [colorTarget, setColorTarget] = useState<ColorTarget>(null);
 	const appRef = useRef<HTMLDivElement>(null);
 
+	const [hasHydratedSettings, setHasHydratedSettings] = useState(false);
+
+	useEffect(() => {
+		const savedSettings = localStorage.getItem("settings");
+		if (!savedSettings) {
+				setHasHydratedSettings(true);
+				return;
+		}
+
+		try {
+			const parsed = JSON.parse(savedSettings) as Partial<{
+					theme: ThemeMode;
+					primaryColor: string;
+					secondaryColor: string;
+			}>;
+
+			if (parsed.theme === "light" || parsed.theme === "dark") {
+				setTheme(parsed.theme);
+			}
+
+			if (typeof parsed.primaryColor === "string") {
+				setPrimaryColor(parsed.primaryColor);
+			}
+
+			if (typeof parsed.secondaryColor === "string") {
+				setSecondaryColor(parsed.secondaryColor);
+			}
+		} catch (error) {
+			console.error("Falha ao carregar configurações salvas", error);
+		} finally {
+			setHasHydratedSettings(true);
+		}
+	}, []);
+
 	useEffect(() => {
 		const savedSettings = localStorage.getItem("settings");
 		if (!savedSettings) return;
@@ -66,32 +100,51 @@ export default function App() {
 		root.style.setProperty("--gray5", `var(--${grayPrefix}gray5)`);
 		root.style.setProperty("--gray6", `var(--${grayPrefix}gray6)`);
 
+		root.style.setProperty("--red", `var(--${grayPrefix}red)`);
+		root.style.setProperty("--orange", `var(--${grayPrefix}orange)`);
+		root.style.setProperty("--yellow", `var(--${grayPrefix}yellow)`);
+		root.style.setProperty("--green", `var(--${grayPrefix}green)`);
+		root.style.setProperty("--turquoise", `var(--${grayPrefix}turquoise)`);
+		root.style.setProperty("--blue", `var(--${grayPrefix}blue)`);
+		root.style.setProperty("--purple", `var(--${grayPrefix}purple)`);
+		root.style.setProperty("--pink", `var(--${grayPrefix}pink)`);
+
 		if (selectedTheme === "dark") {
 			root.style.setProperty("--default-primary-fc", "rgb(240, 240, 245)");
-			root.style.setProperty("--default-secondary-fc", "rgb(200, 200, 205)");
+			root.style.setProperty("--default-secondary-fc", "rgb(170, 170, 170)");
 			root.style.setProperty("--example-bg", "var(--dgray1)");
 			root.style.setProperty("--setting-option-bg", "var(--dgray2)");
 		} else {
-			root.style.setProperty("--default-primary-fc", "rgb(0, 0, 0)");
-			root.style.setProperty("--default-secondary-fc", "rgb(150, 150, 150)");
+			root.style.setProperty("--default-primary-fc", "rgb(0, 0, 5)");
+			root.style.setProperty("--default-secondary-fc", "rgb(90, 90, 90)");
 			root.style.setProperty("--example-bg", "var(--lgray1)");
 			root.style.setProperty("--setting-option-bg", "var(--lgray2)");
 		}
 	}
 
+	function disableTransitionsTemporarily() {
+		document.documentElement.classList.add("no-transition");
+	  
+		setTimeout(() => {
+		  	document.documentElement.classList.remove("no-transition");
+		}, 400);
+	  }
+	  
+
 	function applyColorVariables(colorKey: string, target: "primary" | "secondary") {
-			const root = document.documentElement;
-			const colorValue = getComputedStyle(root).getPropertyValue(`--${colorKey}`).trim();
+		const root = document.documentElement;
+		const colorValue = getComputedStyle(root).getPropertyValue(`--${colorKey}`).trim();
 
-			if (!colorValue) return;
+		if (!colorValue) return;
+		disableTransitionsTemporarily();
 
-			if (target === "primary") {
-				root.style.setProperty("--primary-emphasis", colorValue);
-				root.style.setProperty("--light-primary-emphasis", colorValue);
-			} else {
-				root.style.setProperty("--secondary-emphasis", colorValue);
-				root.style.setProperty("--light-secondary-emphasis", colorValue);
-			}
+		if (target === "primary") {
+			root.style.setProperty("--primary-emphasis", colorValue);
+			root.style.setProperty("--light-primary-emphasis", colorValue);
+		} else {
+			root.style.setProperty("--secondary-emphasis", colorValue);
+			root.style.setProperty("--light-secondary-emphasis", colorValue);
+		}
 	}
 
 	function handleThemeChange(selectedTheme: ThemeMode) {
@@ -124,14 +177,18 @@ export default function App() {
 	useEffect(() => {
 		if (!appRef.current) return;
 
-		const mainElement = appRef.current?.querySelectorAll("main section");
+		const mainElement = appRef.current?.querySelectorAll(".page");
 		if (!mainElement) return;
 
 		const elements: HTMLElement[] = [];
 
 		mainElement.forEach((section) => {
 			const children = section.querySelectorAll<HTMLElement>("*");
-			children.forEach((child) => elements.push(child));
+
+			children.forEach((child) => { 
+				if (child.closest("footer")) return;
+				elements.push(child);
+			});
 		});
 
 
@@ -150,19 +207,24 @@ export default function App() {
 
 	useEffect(() => {
 		applyThemeVariables(theme);
-			applyColorVariables(primaryColor, "primary");
-            applyColorVariables(secondaryColor, "secondary");
-        }, [theme, primaryColor, secondaryColor]);
+		applyColorVariables(primaryColor, "primary");
+		applyColorVariables(secondaryColor, "secondary");
+    }, [theme, primaryColor, secondaryColor]);
 
-        useEffect(() => {
+	useEffect(() => {
+		if (!hasHydratedSettings) return;
 			const settings = {
 				theme,
 				primaryColor,
 				secondaryColor,
 			};
 
-			localStorage.setItem("settings", JSON.stringify(settings));
-    	}, [theme, primaryColor, secondaryColor]);
+			try {
+				localStorage.setItem("settings", JSON.stringify(settings));
+			} catch (error) {
+				console.error("Falha ao salvar configurações", error);
+			}
+	}, [theme, primaryColor, secondaryColor, hasHydratedSettings]);
 
 	function handleNewTab() {
 		const newTab: Tab = {
@@ -267,7 +329,7 @@ export default function App() {
 		if (tab.view === "home") {
 			return (
 				<React.Fragment key={activeTabId}>
-					<div id="home" className="home-page">
+					<div id="home" className="home-page page">
 						<footer className="home-nav">
 							<nav>
 								<a href="#my-week">
@@ -383,7 +445,7 @@ export default function App() {
 
 		if (tab.view === "settings") {
 			return (
-				<div id="settings" className="settings-page">
+				<div id="settings" className="settings-page page">
 					<header className="tab-content-title">
 							<a 
 								className="back-btn"
@@ -430,7 +492,7 @@ export default function App() {
 											<i className="fa-solid fa-sun"></i>
 											Tema Claro
 										</h6>
-										<p>Melhora legibilidade, adequado para ambientes iluminados</p>
+										<p>(Recomendado) Para o uso diurno</p>
 										<button
 											className={`select-button ${theme === "light" ? "active" : ""}`}
 											onClick={() => handleThemeChange("light")}
@@ -462,7 +524,7 @@ export default function App() {
 											<i className="fa-solid fa-moon"></i>
 											Tema Escuro
 										</h6>
-										<p>Reduz cansaço visual, adequado para ambientes escuros</p>
+										<p>Para o uso noturno</p>
 										<button
 											className={`select-button ${theme === "dark" ? "active" : ""}`}
 											onClick={() => handleThemeChange("dark")}
@@ -530,12 +592,20 @@ export default function App() {
 
 		if (tab.view === "account") {
 			return (
-				<div id="account" className="account-page">
-					<section>
-						<div>
-							<h1>Configurações</h1>
-						</div>
-					</section>
+				<div id="account" className="account-page page">
+					<header className="tab-content-title">
+							<a 
+								className="back-btn"
+								href="#home"
+								onClick={(e) => {
+									e.preventDefault();
+									changeTab("home");
+								}}
+							>
+								<i className="fa-solid fa-arrow-left"></i>
+							</a>
+							<h1>Conta</h1>
+					</header>
 				</div>
 			);
 		}

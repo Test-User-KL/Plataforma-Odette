@@ -15,14 +15,32 @@
 	--secondary-emphasis: rgb(250, 140, 20);
 	--light-secondary-emphasis: rgb(250, 160, 40);
 
-	--red: rgb(230, 0, 0);
-	--orange: rgb(250, 70, 20);
-	--yellow: rgb(250, 140, 0);
-	--green: rgb(0, 180, 0);
-	--turquoise: rgb(0, 180, 80);
-	--blue: rgb(0, 30, 200);
-	--purple: rgb(50, 0, 230);
-	--pink: rgb(230, 0, 100);
+	--red: var(--lred);
+	--orange: var(--lorange);
+	--yellow: var(--lyellow);
+	--green: var(--lgreen);
+	--turquoise: var(--lturquoise);
+	--blue: var(--lblue);
+	--purple: var(--lpurple);
+	--pink: var(--lpink);
+
+	--lred: rgb(230, 0, 0);
+	--lorange: rgb(250, 70, 20);
+	--lyellow: rgb(250, 140, 0);
+	--lgreen: rgb(0, 180, 0);
+	--lturquoise: rgb(0, 180, 80);
+	--lblue: rgb(0, 30, 200);
+	--lpurple: rgb(50, 0, 230);
+	--lpink: rgb(230, 0, 100);
+
+	--dred: rgb(245, 25, 25);
+	--dorange: rgb(255, 95, 45);
+	--dyellow: rgb(255, 160, 30);
+	--dgreen: rgb(25, 200, 25);
+	--dturquoise: rgb(25, 200, 100);
+	--dblue: rgb(30, 55, 220);
+	--dpurple: rgb(75, 25, 245);
+	--dpink: rgb(245, 25, 125);
 
 	--lgray1: rgb(245, 245, 250);
 	--lgray2: rgb(235, 235, 240);
@@ -85,7 +103,7 @@
 	/* Geral */ 
 	--default-fs: 0.9rem;
 	--default-primary-fc: rgb(0, 0, 0);
-	--default-secondary-fc: rgb(150, 150, 150);
+	--default-secondary-fc: rgb(130, 130, 130);
 	--light-bs: 0 0 0.5rem rgba(0, 0, 0, 0.125);
 	--default-bs: 0 0 1rem rgba(0, 0, 0, 0.25);
 	--border-color: var(--gray6);
@@ -119,6 +137,10 @@ h3 { font-size: 2rem; }
 h4 { font-size: 1.75rem; }
 h5 { font-size: 1.5rem; }
 h6 { font-size: 1.25rem; }
+
+.no-transition {
+	transition: none !important;
+}
 
 .divider {
 	display: flex;
@@ -390,12 +412,12 @@ main {
     background-image:
 		repeating-linear-gradient(
 			to bottom,
-			var(--gray4) 0 var(--w),
+			var(--gray3) 0 var(--w),
 			transparent var(--w) var(--s)
 		),
 		repeating-linear-gradient(
 			to right,
-			var(--gray4) 0 var(--w),
+			var(--gray3) 0 var(--w),
 			transparent var(--w) var(--s)
 		);
 	background-position: var(--w);

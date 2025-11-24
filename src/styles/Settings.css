@@ -255,6 +255,7 @@
     grid-area: p; 
     margin-left: 1rem;
     margin-bottom: 1rem;
+    color: var(--default-secondary-fc);
 }
 
 .select-button {
