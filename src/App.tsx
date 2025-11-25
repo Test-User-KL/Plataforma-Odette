@@ -584,7 +584,6 @@ export default function App() {
 							<button className="blue" style={{ backgroundColor: 'var(--blue)' }} onClick={() => handleColorPick("blue")}></button>
 							<button className="purple" style={{ backgroundColor: 'var(--purple)' }} onClick={() => handleColorPick("purple")}></button>
 							<button className="pink" style={{ backgroundColor: 'var(--pink)' }} onClick={() => handleColorPick("pink")}></button>
-							<button className="close-dialog-btn" onClick={closeColorSelector}><i className="fa-solid fa-times"></i></button>
 						</div>	
 					</dialog>
 				</div>
