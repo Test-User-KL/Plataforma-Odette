@@ -29,7 +29,7 @@
     margin-top: 0.3rem;
 }
 
-.color-selector button:not(:last-child) {
+.color-selector button {
     display: flex;
     align-items: center;
     justify-content: center;
