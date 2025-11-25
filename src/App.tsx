@@ -492,7 +492,7 @@ export default function App() {
 											<i className="fa-solid fa-sun"></i>
 											Tema Claro
 										</h6>
-										<p>(Recomendado) Para o uso diurno</p>
+										<p>Para o uso diurno</p>
 										<button
 											className={`select-button ${theme === "light" ? "active" : ""}`}
 											onClick={() => handleThemeChange("light")}
