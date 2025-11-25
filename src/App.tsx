@@ -572,6 +572,7 @@ export default function App() {
 						className={`color-selector ${colorTarget ? "": "is-closed"}`}
 						aria-hidden={!colorTarget}
 					>
+						<button className="close-dialog-btn" onClick={closeColorSelector}><i className="fa-solid fa-times"></i></button>
 						<h3>Seleção de Cor</h3>
 						<p><span style={{fontWeight: "bold"}}>Dica</span>: utilize cores diferentes para um melhor contraste.</p>
 						<div className="dialog-select">
