@@ -330,46 +330,6 @@ export default function App() {
 			return (
 				<React.Fragment key={activeTabId}>
 					<div id="home" className="home-page page">
-						<footer className="home-nav">
-							<nav>
-								<a href="#my-week">
-									<i className="fa-regular fa-clock"></i>
-									<span>Aulas</span>
-								</a>
-								<a href="#my-tasks">
-									<i className="fa-solid fa-clipboard-list"></i>
-									<span>Tarefas</span>
-								</a>
-								<a href="#my-subjects">
-									<i className="fa-solid fa-graduation-cap"></i>
-									<span>Disciplinas</span>
-								</a>
-	
-								<span className="separator"></span>
-	
-								<a 
-									href="#settings"
-									onClick={(e) => {
-										e.preventDefault();
-										changeTab("settings");
-									}}
-								>
-									<i className="fa-solid fa-gear"></i>
-									<span>Configuração</span>
-								</a>
-								<a 
-									href="#account"
-									onClick={(e) => {
-										e.preventDefault();
-										changeTab("account");
-									}}
-								>
-									<i className="fa-solid fa-user"></i>
-									<span>Conta</span>
-								</a>
-							</nav>
-						</footer>
-	
 						<section id="my-week" className="my-week">
 							<div className="summary">
 								<h1>Aulas de Hoje</h1>
@@ -675,6 +635,44 @@ export default function App() {
 			<main className="tab-content">
 				{activeTab && renderActiveTabContent(activeTab)}
 			</main>
+
+			<nav className="main-nav">
+				<a href="#my-week">
+					<i className="fa-regular fa-clock"></i>
+					<span>Aulas</span>
+				</a>
+				<a href="#my-tasks">
+					<i className="fa-solid fa-clipboard-list"></i>
+					<span>Tarefas</span>
+				</a>
+				<a href="#my-subjects">
+					<i className="fa-solid fa-graduation-cap"></i>
+					<span>Disciplinas</span>
+				</a>
+
+				<span className="separator"></span>
+
+				<a 
+					href="#settings"
+					onClick={(e) => {
+						e.preventDefault();
+						changeTab("settings");
+					}}
+				>
+					<i className="fa-solid fa-gear"></i>
+					<span>Configuração</span>
+				</a>
+				<a 
+					href="#account"
+					onClick={(e) => {
+						e.preventDefault();
+						changeTab("account");
+					}}
+				>
+					<i className="fa-solid fa-user"></i>
+					<span>Conta</span>
+				</a>
+			</nav>
 		</div>
 	);
 }
