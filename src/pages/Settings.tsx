@@ -38,7 +38,7 @@ export default function SettingsPage({
                 <div className="settings">
                     <div className="setting">
                         <div className="divider">
-                            <i className="fa-solid fa-paintbrush"></i>
+                            <i className="bi bi-stars"></i>
                             <h6>Tema</h6>
                         </div>
                         <div className="setting-select">
@@ -63,7 +63,7 @@ export default function SettingsPage({
                                     </div>
                                 </div>
                                 <h6>
-                                    <i className="fa-solid fa-sun"></i>
+                                    <i className="bi bi-sun-fill"></i>
                                     Tema Claro
                                 </h6>
                                 <p>Para o uso diurno</p>
@@ -95,7 +95,7 @@ export default function SettingsPage({
                                     </div>
                                 </div>
                                 <h6>
-                                    <i className="fa-solid fa-moon"></i>
+                                    <i className="bi bi-moon-stars-fill"></i>
                                     Tema Escuro
                                 </h6>
                                 <p>Para o uso noturno</p>
@@ -111,7 +111,7 @@ export default function SettingsPage({
 
                     <div className="setting">
                         <div className="divider">
-                            <i className="fa-solid fa-palette"></i>
+                            <i className="bi bi-palette"></i>
                             <h6>Cores</h6>
                         </div>
                         <div className="setting-select">
@@ -157,7 +157,6 @@ export default function SettingsPage({
                     </div>
                 </div>
             </section>
-
         </div>
     );
 }

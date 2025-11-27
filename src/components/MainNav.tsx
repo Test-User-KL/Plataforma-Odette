@@ -1,4 +1,5 @@
 import type { TabView } from "../types/tabs";
+import "../styles/MainNav.css"
 
 interface MainNavProps {
         changeTab: (targetView: TabView) => void;
@@ -19,7 +20,7 @@ export default function MainNav({ changeTab, activeView }: MainNavProps) {
 				}}
 				className={getClassName("home")}
 			>
-				<i className="fa-solid fa-home"></i>
+				<i className="fa-solid fa-house"></i>
 				<span>Início</span>
 			</a>
 
@@ -31,7 +32,7 @@ export default function MainNav({ changeTab, activeView }: MainNavProps) {
 				}}
 				className={getClassName("subjects")}
 			>
-				<i className="fa-brands fa-microsoft"></i>
+				<i className="bi bi-grid-fill"></i>
 				<span>Disciplinas</span>
 			</a>
 

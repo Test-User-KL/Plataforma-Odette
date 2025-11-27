@@ -4,7 +4,10 @@ export default function HomePage() {
             <section id="my-week" className="my-week">
                 <div className="summary">
                     <h1>Aulas de Hoje</h1>
-                    <button className="special show-schedule">Horário das Aulas</button>
+                    <button className="special show-schedule">
+                        <i className="fa-solid fa-calendar"></i>
+                        Programação Semanal
+                        </button>
                     <div className="current-previous-next-class">
                         <div className="current-class">
                             <div className="texts">
@@ -15,15 +18,15 @@ export default function HomePage() {
                                 <h6>Arquivos</h6>
                                 <div className="files-list">
                                     <button>
-                                    <i className="fa-regular fa-file"></i>
+                                    <i className="bi bi-file-earmark"></i>
                                         Arquivo 1
                                     </button>
                                     <button>
-                                        <i className="fa-regular fa-file"></i>
+                                        <i className="bi bi-file-earmark"></i>
                                         Arquivo 2
                                     </button>
                                     <button>
-                                        <i className="fa-regular fa-file"></i>
+                                        <i className="bi bi-file-earmark"></i>
                                         Arquivo 3
                                     </button>
                                 </div>
@@ -32,27 +35,27 @@ export default function HomePage() {
                                 <h6>Atalhos</h6>
                                 <div className="shortcuts-list">
                                     <button>
-                                        <i className="fa-solid fa-graduation-cap"></i>
+                                        <i className="bi bi-book"></i>
                                         Disciplina
                                     </button>
                                     <button>
-                                        <i className="fa-solid fa-clipboard-list"></i>
+                                        <i className="bi bi-clipboard"></i>
                                         Tarefas
                                     </button>
                                     <button>
-                                        <i className="fa-solid fa-book"></i>
+                                        <i className="bi bi-journal"></i>
                                         Caderno
                                     </button>
                                 </div>
                             </div>
                         </div>
                         <div className="previous-class">
-                                <p>Anterior:</p>
-                                <h5>Disciplina</h5>
+                            <p>Anterior:</p>
+                            <h5>Disciplina</h5>
                         </div>
                         <div className="next-class">
-                                <p>Próxima:</p>
-                                <h5>Disciplina</h5>
+                            <p>Próxima:</p>
+                            <h5>Disciplina</h5>
                         </div>
                     </div>
                 </div>	

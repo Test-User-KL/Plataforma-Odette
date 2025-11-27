@@ -17,7 +17,7 @@ export default function App() {
 		{
 			id: 1,
 			title: "Página Inicial",
-			iconClass: "fa-solid fa-home",
+			iconClass: "fa-solid fa-house",
 			view: "home"
 		},
 	]);
@@ -211,7 +211,7 @@ export default function App() {
 		const newTab: Tab = {
 			id: Date.now(),
 			title: "Página Inicial",
-			iconClass: "fa-solid fa-home",
+			iconClass: "fa-solid fa-house",
 			view: "home",
 		};
 
@@ -229,7 +229,7 @@ export default function App() {
 						...tab,
 						view: "home",
 						title: "Página Inicial",
-						iconClass: "fa-solid fa-home",
+						iconClass: "fa-solid fa-house",
 					};
 				}
 
@@ -238,7 +238,7 @@ export default function App() {
 						...tab,
 						view: "subjects",
 						title: "Disciplinas",
-						iconClass: "fa-brands fa-microsoft",
+						iconClass: "bi bi-grid-fill",
 					};
 				}
 		
