@@ -1,4 +1,3 @@
-import React from "react";
 import type { TabView } from "../types/tabs";
 
 interface MainNavProps {
