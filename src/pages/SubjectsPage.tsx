@@ -1,10 +1,14 @@
-import React from "react";
+import type { TabView } from "../types/tabs";
 
-export default function SubjectsPage() {
+type SubjectsPageProps = {
+    changeTab: (view: TabView) => void;
+};
+
+export default function SubjectsPage({ changeTab }: SubjectsPageProps) {
     return (
         <div id="subjects" className="settings-page page">
             <header className="tab-content-title">
-                <a 
+                <a
                     className="back-btn"
                     href="#home"
                     onClick={(e) => {
@@ -17,5 +21,5 @@ export default function SubjectsPage() {
                 <h1>Disciplinas</h1>
             </header>
         </div>
-    )
+    );
 }
