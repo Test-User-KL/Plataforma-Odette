@@ -179,11 +179,6 @@
 	font-size: 1.5rem;
 }
 
-.my-week .summary .current-previous-next-class .current-class .shortcuts .shortcuts-list button:hover,
-.my-week .summary .current-previous-next-class .current-class .files .files-list button:hover {
-	background: var(--div-hover-bg-color);
-}
-
 .my-week .summary .current-previous-next-class .previous-class, 
 .my-week .summary .current-previous-next-class .next-class {
 	display: flex;

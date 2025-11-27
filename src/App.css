@@ -32,13 +32,13 @@
 	--lpink: rgb(230, 0, 100);
 
 	--dred: rgb(200, 0, 0);
-	--dorange: rgb(220, 75, 20);
-	--dyellow: rgb(220, 130, 0);
-	--dgreen: rgb(0, 150, 0);
+	--dorange: rgb(230, 65, 20);
+	--dyellow: rgb(230, 140, 0);
+	--dgreen: rgb(0, 160, 0);
 	--dturquoise: rgb(0, 160, 115);
-	--dblue: rgb(0, 25, 170);
-	--dpurple: rgb(85, 0, 200);
-	--dpink: rgb(200, 0, 90);
+	--dblue: rgb(0, 30, 210);
+	--dpurple: rgb(90, 0, 210);
+	--dpink: rgb(210, 0, 95);
 
 	--lgray1: rgb(245, 245, 250);
 	--lgray2: rgb(235, 235, 240);
@@ -93,7 +93,7 @@
 	/* Div */ 
 	--div-bg-color: var(--gray1);
 	--div-hover-bg-color: var(--gray4);
-	--div-bd-color: var(--gray5);
+	--div-bd-color: var(--gray4);
 
 	/* Botões */
 	--button-bg-primary-color: var(--primary-emphasis);
@@ -196,7 +196,7 @@ h6 { font-size: 1.25rem; }
 	box-shadow: var(--light-bs);
 }
 
-button, .tab-content-title a {
+button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -223,6 +223,8 @@ button.special {
 li > button {
 	background: var(--button-bg-secondary-color);
 	border: var(--border-width) solid var(--button-bd-secondary-color);
+	outline: var(--separator-width) dashed var(--button-bd-secondary-color);
+	outline-offset: -0.5rem;
 }
 
 ul.list {
@@ -495,7 +497,7 @@ main section {
 	width: 3rem;
 	height: 3rem;
 	border-radius: 0.75rem;
-	background: var(--highlight-button-bg-color);
+	background: var(--button-bg-primary-color);
 	outline: var(--separator-width) dashed var(--light);
 	outline-offset: -0.5rem;
 	box-shadow: var(--default-bs);
