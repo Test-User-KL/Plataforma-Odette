@@ -313,13 +313,15 @@ export default function App() {
 		setDraggedTabId(null);
 	}
 
-        const activeTab = tabs.find((t) => t.id === activeTabId);
-        const activeView = activeTab?.view ?? "home";
+	const activeTab = tabs.find((t) => t.id === activeTabId);
+	const activeView = activeTab?.view ?? "home";
 
 	function renderActiveTabContent(tab: Tab) {
 		switch (tab.view) {
 			case "home":
-				return <HomePage />;
+				return (
+					<HomePage />
+				);
 			case "subjects":
 				return <SubjectsPage changeTab={changeTab} />;
 			case "settings":

@@ -3,7 +3,7 @@
 	--current-class-list-bg: var(--light);
 	--current-class-list-button-bg: var(--gray1);
 	--current-class-list-button-hover-bg: var(--gray2);
-	--previous-next-class-bg: var(--gray2);
+	--previous-next-class-bg: var(--gray1);
 	--previous-next-class-bd: var(--gray5);
 }
 
@@ -40,7 +40,7 @@
 			'current previous'
 			'current next'
 		;
-		grid-template-columns: 1fr 12.5rem;
+		grid-template-columns: 1fr 13rem;
 		grid-template-rows: calc(50% - 0.5rem) calc(50% - 0.5rem);
 	}
 
@@ -50,7 +50,7 @@
 			'texts shortcuts'
 			'files shortcuts'
 		;
-		grid-template-rows: 1fr 10rem;
+		grid-template-rows: 1fr 11rem;
 		grid-template-columns: 1fr minmax(0, min(50%, 15rem));
 		gap: 0.75rem;
 	}
@@ -67,18 +67,23 @@
 		'h1 btn'
 		'cpnc cpnc'
 	;
-	grid-template-columns: 1fr 10rem;
+	grid-template-columns: 1fr 13rem;
 	gap: 1rem;
 } 
 
 .my-week .summary h1 { grid-area: h1; }
+
 .my-week .summary .show-schedule { 
 	grid-area: btn; 
 	align-self: center;
 	justify-self: end;
 	height: 100%;
-	width: 10rem;
+	width: 100%;
 	border-radius: 0.75rem;
+}
+
+.my-week .summary .show-schedule * {
+	color: var(--white);
 }
 
 .my-week .summary .current-previous-next-class {
@@ -138,6 +143,12 @@
 	display: flex;
 	gap: 0.5rem;
 	height: 100%;
+	overflow-x: auto;
+}
+
+.my-week .summary .current-previous-next-class .current-class .shortcuts .shortcuts-list::-webkit-scrollbar,
+.my-week .summary .current-previous-next-class .current-class .files .files-list::-webkit-scrollbar {
+	display: none;
 }
 
 .my-week .summary .current-previous-next-class .current-class .shortcuts .shortcuts-list button,
@@ -146,14 +157,13 @@
 	border: var(--border-width) solid var(--light);
 	box-shadow: var(--light-bs);
 	height: 100%;
-	width: 100%;
+	min-width: 6.5rem;
 	padding: 0.75rem 1rem;
 }
 
 .my-week .summary .current-previous-next-class .current-class .files .files-list button {
 	flex-direction: column;
 	width: 6.5rem;
-	height: 6.5rem;
 }
 
 .my-week .summary .current-previous-next-class .current-class .files .files-list button i {
