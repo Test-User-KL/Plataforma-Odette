@@ -30,37 +30,37 @@ export default function App() {
 
 	const [hasHydratedSettings, setHasHydratedSettings] = useState(false);
 
-        useEffect(() => {
-                const savedSettings = localStorage.getItem("settings");
-                if (!savedSettings) {
-                        setHasHydratedSettings(true);
-                        return;
-                }
+	useEffect(() => {
+		const savedSettings = localStorage.getItem("settings");
+		if (!savedSettings) {
+			setHasHydratedSettings(true);
+			return;
+		}
 
-                try {
-                        const parsed = JSON.parse(savedSettings) as Partial<{
-                                theme: ThemeMode;
-                                primaryColor: string;
-                                secondaryColor: string;
-                        }>;
+		try {
+			const parsed = JSON.parse(savedSettings) as Partial<{
+				theme: ThemeMode;
+				primaryColor: string;
+				secondaryColor: string;
+			}>;
 
-                        if (parsed.theme === "light" || parsed.theme === "dark") {
-                                setTheme(parsed.theme);
-                        }
+			if (parsed.theme === "light" || parsed.theme === "dark") {
+				setTheme(parsed.theme);
+			}
 
-                        if (typeof parsed.primaryColor === "string") {
-                                setPrimaryColor(parsed.primaryColor);
-                        }
+			if (typeof parsed.primaryColor === "string") {
+				setPrimaryColor(parsed.primaryColor);
+			}
 
-                        if (typeof parsed.secondaryColor === "string") {
-                                setSecondaryColor(parsed.secondaryColor);
-                        }
-                } catch (error) {
-                        console.error("Falha ao carregar configurações salvas", error);
-                } finally {
-                        setHasHydratedSettings(true);
-                }
-        }, []);
+			if (typeof parsed.secondaryColor === "string") {
+				setSecondaryColor(parsed.secondaryColor);
+			}
+		} catch (error) {
+			console.error("Falha ao carregar configurações salvas", error);
+		} finally {
+			setHasHydratedSettings(true);
+		}
+	}, []);
 
 	function applyThemeVariables(selectedTheme: ThemeMode) {
 		const root = document.documentElement;
@@ -251,10 +251,10 @@ export default function App() {
 				}
 		
 				return {
-				...tab,
-				view: "account",
-				title: "Conta",
-				iconClass: "fa-solid fa-user",
+					...tab,
+					view: "account",
+					title: "Conta",
+					iconClass: "fa-solid fa-user",
 				};
 			})
 		);
@@ -312,108 +312,111 @@ export default function App() {
 		setDraggedTabId(null);
 	}
 
-        const activeTab = tabs.find((t) => t.id === activeTabId);
+	const activeTab = tabs.find((t) => t.id === activeTabId);
 
-        function renderActiveTabContent(tab: Tab) {
-                switch (tab.view) {
-                        case "home":
-                                return <HomePage />;
-                        case "subjects":
-                                return <SubjectsPage changeTab={changeTab} />;
-                        case "settings":
-                                return (
-                                        <SettingsPage
-                                                theme={theme}
-                                                primaryColor={primaryColor}
-                                                secondaryColor={secondaryColor}
-                                                changeTab={changeTab}
-                                                openColorSelector={openColorSelector}
-                                                handleThemeChange={handleThemeChange}
-                                        />
-                                );
-                        case "account":
-                                return <AccountPage changeTab={changeTab} />;
-                        default:
-                                return null;
-                }
-        }
+	function renderActiveTabContent(tab: Tab) {
+		switch (tab.view) {
+			case "home":
+				return <HomePage />;
+			case "subjects":
+				return <SubjectsPage changeTab={changeTab} />;
+			case "settings":
+				return (
+					<SettingsPage
+							theme={theme}
+							primaryColor={primaryColor}
+							secondaryColor={secondaryColor}
+							changeTab={changeTab}
+							openColorSelector={openColorSelector}
+							handleThemeChange={handleThemeChange}
+					/>
+				);
+			case "account":
+				return <AccountPage changeTab={changeTab} />;
+			default:
+				return null;
+		}
+	}
 
-        return (
-                <div ref={appRef} className="app-root">
-                        <header className="tab-header">
-                                <button
-                                        id="new-tab"
-                                        onClick={handleNewTab}
-                                        className="new-tab-button special"
-                                        title="Nova aba"
-                                >
-                                        <i className="fa-solid fa-plus"></i>
-                                </button>
+	return (
+		<div ref={appRef} className="app-root">
+			<header className="tab-header">
+					<button
+						id="new-tab"
+						onClick={handleNewTab}
+						className="new-tab-button special"
+						title="Nova aba"
+					>
+						<i className="fa-solid fa-plus"></i>
+					</button>
 
-                                <TabNavigation
-                                        tabs={tabs}
-                                        activeTabId={activeTabId}
-                                        onSelect={setActiveTabId}
-                                        onClose={handleCloseTab}
-                                        onDragStart={handleDragStart}
-                                        onDragOver={handleDragOver}
-                                        onDrop={handleDrop}
-                                />
-                        </header>
+					<TabNavigation
+						tabs={tabs}
+						activeTabId={activeTabId}
+						onSelect={setActiveTabId}
+						onClose={handleCloseTab}
+						onDragStart={handleDragStart}
+						onDragOver={handleDragOver}
+						onDrop={handleDrop}
+					/>
+			</header>
 
-                        <main className="tab-content">
-                                {activeTab && renderActiveTabContent(activeTab)}
-                                <ColorSelector
-                                        colorTarget={colorTarget}
-                                        primaryColor={primaryColor}
-                                        secondaryColor={secondaryColor}
-                                        onPick={handleColorPick}
-                                        onClose={closeColorSelector}
-                                />
-                        </main>
+			<main className="tab-content">
+				{activeTab && renderActiveTabContent(activeTab)}
+				<ColorSelector
+					colorTarget={colorTarget}
+					primaryColor={primaryColor}
+					secondaryColor={secondaryColor}
+					onPick={handleColorPick}
+					onClose={closeColorSelector}
+				/>
+			</main>
 
-                        <nav className="main-nav">
-                                <a
-                                        href="#home"
-                                        onClick={(e) => {
-                                                e.preventDefault();
-                                                changeTab("home");
-                                        }}
-                                >
-                                        <i className="fa-solid fa-home"></i>
-                                        <span>Início</span>
-                                </a>
-                                <a
-                                        href="#subjects"
-                                        onClick={(e) => {
-                                                e.preventDefault();
-                                                changeTab("subjects");
-                                        }}
-                                >
-                                        <i className="fa-brands fa-microsoft"></i>
-                                        <span>Disciplinas</span>
-                                </a>
-                                <a
-                                        href="#settings"
-                                        onClick={(e) => {
-                                                e.preventDefault();
-                                                changeTab("settings");
-                                        }}
-                                >
-                                        <i className="fa-solid fa-gear"></i>
-                                        <span>Configuração</span>
-                                </a>
-                                <a
-                                        href="#account"
-                                        onClick={(e) => {
-                                                e.preventDefault();
-                                                changeTab("account");
-                                        }}
-                                >
-                                        <i className="fa-solid fa-user"></i>
-                                        <span>Conta</span>
-                                </a>
-                        </nav>
-                </div>
-        );
+			<nav className="main-nav">
+					<a
+						href="#home"
+						onClick={(e) => {
+							e.preventDefault();
+							changeTab("home");
+						}}
+					>
+						<i className="fa-solid fa-home"></i>
+						<span>Início</span>
+					</a>
+
+					<a
+						href="#subjects"
+						onClick={(e) => {
+							e.preventDefault();
+							changeTab("subjects");
+						}}
+					>
+						<i className="fa-brands fa-microsoft"></i>
+						<span>Disciplinas</span>
+					</a>
+
+					<a
+						href="#settings"
+						onClick={(e) => {
+							e.preventDefault();
+							changeTab("settings");
+						}}
+					>
+						<i className="fa-solid fa-gear"></i>
+						<span>Configuração</span>
+					</a>
+
+					<a
+						href="#account"
+						onClick={(e) => {
+							e.preventDefault();
+							changeTab("account");
+						}}
+					>
+						<i className="fa-solid fa-user"></i>
+						<span>Conta</span>
+					</a>
+			</nav>
+		</div>
+	);
 }
