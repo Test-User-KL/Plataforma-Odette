@@ -93,14 +93,14 @@
 	/* Div */ 
 	--div-bg-color: var(--gray1);
 	--div-hover-bg-color: var(--gray4);
-	--div-bd-color: var(--gray4);
+	--div-bd-color: var(--gray5);
 
 	/* Botões */
 	--button-bg-primary-color: var(--primary-emphasis);
 	--button-bd-primary-color: var(--light);
 
 	--button-bg-secondary-color: var(--gray1);
-	--button-bd-secondary-color: var(--gray4);
+	--button-bd-secondary-color: var(--gray5);
 
 	--highlight-button-bg-color: var(--secondary-emphasis);
 
