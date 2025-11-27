@@ -107,10 +107,12 @@
 	--header-button-bg: var(--gray1);
 	--header-button-bd: var(--gray4);
 
-	/* Nav */
-	--nav-height: 2.5rem;
-	--nav-bg: var(--tgray3);
-	--nav-bd: var(--tgray5);
+	/* Main Nav */
+	--main-nav-height: 2.5rem;
+	--main-nav-bg: var(--tgray3);
+	--main-nav-bd: var(--tgray5);
+	--main-nav-a-hover-bg: var(--tgray6);
+	--main-nav-a-active-bg: var(--tgray2);
 
 	/* Section */
 	--minor-padding-section: 2.5rem;
@@ -435,16 +437,16 @@ main {
 	height: 100vh;
 	--s: 28px;       
     --w: 1px;     
-    background: var(--gray1);
+    background: var(--gray2);
     background-image:
 		repeating-linear-gradient(
 			to bottom,
-			var(--gray3) 0 var(--w),
+			var(--gray4) 0 var(--w),
 			transparent var(--w) var(--s)
 		),
 		repeating-linear-gradient(
 			to right,
-			var(--gray3) 0 var(--w),
+			var(--gray4) 0 var(--w),
 			transparent var(--w) var(--s)
 		);
 	background-position: var(--w);
@@ -509,11 +511,11 @@ main section {
 	bottom: 2rem;
 	max-width: calc(100% - 4rem);
 	padding: 0.25rem;
-	height: calc(var(--border-width) * 2 + var(--nav-height));
+	height: calc(var(--border-width) * 2 + var(--main-nav-height));
 	border-radius: 1.5rem;
-	background: var(--nav-bg);
-	border: var(--border-width) solid var(--nav-bd);
-	box-shadow: var(--default-bs);
+	background: var(--main-nav-bg);
+	border: var(--border-width) solid var(--main-nav-bd);
+	box-shadow: var(--light-bs);
 	overflow-x: auto;
 	gap: 0.25rem;
 	backdrop-filter: blur(1.25rem);
@@ -547,6 +549,14 @@ main section {
 	text-decoration: none;
 	font-size: var(--default-fs);
 	transition: var(--default-transition);
+}
+
+.main-nav a:hover {
+	background: var(--main-nav-a-hover-bg);
+}
+
+.main-nav a.active {
+	background-color: var(--main-nav-a-active-bg);
 }
 
 .main-nav .separator {

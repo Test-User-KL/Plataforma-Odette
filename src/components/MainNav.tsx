@@ -13,6 +13,7 @@ export default function MainNav({ changeTab }: MainNavProps) {
 					e.preventDefault();
 					changeTab("home");
 				}}
+				className="active"
 			>
 				<i className="fa-solid fa-home"></i>
 				<span>Início</span>
