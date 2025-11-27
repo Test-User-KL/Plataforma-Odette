@@ -66,6 +66,7 @@ export default function HomePage() {
                 <div className="allClasses">
                     <div className="class">
                         <h4>Tema da Aula Não Definido</h4>
+                        <p>Prof. Nome</p>
                     </div>
                 </div>
             </section>
