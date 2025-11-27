@@ -1,8 +1,14 @@
-export default function SubjectsPage() {
+import type { TabView } from "../types/tabs";
+
+type AccountPageProps = {
+    changeTab: (view: TabView) => void;
+};
+
+export default function AccountPage({ changeTab }: AccountPageProps) {
     return (
         <div id="account" className="account-page page">
             <header className="tab-content-title">
-                <a 
+                <a
                     className="back-btn"
                     href="#home"
                     onClick={(e) => {
@@ -15,5 +21,5 @@ export default function SubjectsPage() {
                 <h1>Conta</h1>
             </header>
         </div>
-    )
+    );
 }
