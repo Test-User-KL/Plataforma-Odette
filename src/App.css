@@ -110,8 +110,7 @@
 	/* Nav */
 	--nav-height: 2.5rem;
 	--nav-bg: var(--tgray3);
-	--nav-bd: var(--gray5);
-	--nav-a-bg-hover: var(--tgray2);
+	--nav-bd: var(--tgray5);
 
 	/* Section */
 	--minor-padding-section: 2.5rem;
@@ -548,10 +547,6 @@ main section {
 	text-decoration: none;
 	font-size: var(--default-fs);
 	transition: var(--default-transition);
-}
-
-.main-nav a:hover {
-	background: var(--nav-a-bg-hover);
 }
 
 .main-nav .separator {

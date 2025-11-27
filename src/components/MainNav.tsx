@@ -11,8 +11,8 @@ export default function MainNav({ changeTab }: MainNavProps) {
 			<a
 				href="#home"
 				onClick={(e) => {
-						e.preventDefault();
-						changeTab("home");
+					e.preventDefault();
+					changeTab("home");
 				}}
 			>
 				<i className="fa-solid fa-home"></i>
@@ -22,8 +22,8 @@ export default function MainNav({ changeTab }: MainNavProps) {
 			<a
 				href="#subjects"
 				onClick={(e) => {
-						e.preventDefault();
-						changeTab("subjects");
+					e.preventDefault();
+					changeTab("subjects");
 				}}
 			>
 				<i className="fa-brands fa-microsoft"></i>
@@ -33,8 +33,8 @@ export default function MainNav({ changeTab }: MainNavProps) {
 			<a
 				href="#settings"
 				onClick={(e) => {
-						e.preventDefault();
-						changeTab("settings");
+					e.preventDefault();
+					changeTab("settings");
 				}}
 			>
 				<i className="fa-solid fa-gear"></i>
@@ -44,8 +44,8 @@ export default function MainNav({ changeTab }: MainNavProps) {
 			<a
 				href="#account"
 				onClick={(e) => {
-						e.preventDefault();
-						changeTab("account");
+					e.preventDefault();
+					changeTab("account");
 				}}
 			>
 				<i className="fa-solid fa-user"></i>
