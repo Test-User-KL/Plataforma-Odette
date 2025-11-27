@@ -1,10 +1,10 @@
 :root {
-    --setting-option-bg: var(--gray2);
-    --setting-option-bd: var(--gray5);
-    --example-bg: var(--gray1);
-    --select-button-bg: var(--gray1);
-    --select-button-active-bg: var(--secondary-emphasis);
-    --select-button-bd: var(--gray5);
+    --setting-option-bg-color: var(--gray2);
+    --setting-option-bd-color: var(--gray5);
+    --example-bg-color: var(--gray1);
+    --select-button-bg-color: var(--gray1);
+    --select-button-active-bg-color: var(--secondary-emphasis);
+    --select-button-bd-color: var(--gray5);
 }
 
 .color-selector {
@@ -53,8 +53,8 @@
     ;
     grid-template-columns: 1fr 2.5rem;
     grid-template-rows: 10rem auto 1fr;
-    background: var(--setting-option-bg);
-    border: var(--border-width) solid var(--setting-option-bd);
+    background: var(--setting-option-bg-color);
+    border: var(--border-width) solid var(--setting-option-bd-color);
     border-radius: 1rem;
     overflow: hidden;
 }
@@ -258,14 +258,14 @@
     margin-right: 1rem;
     margin-bottom: 1rem;
     margin-top: 1rem;
-    background: var(--select-button-bg);
-    border: var(--border-width) solid var(--select-button-bd);
+    background: var(--select-button-bg-color);
+    border: var(--border-width) solid var(--select-button-bd-color);
     box-shadow: none;
     transition: var(--default-transition);
 }
 
 .select-button:hover {
-    background: var(--select-button-bg);
+    background: var(--select-button-bg-color);
 }
 
 .select-button i {
@@ -274,8 +274,8 @@
     transition: var(--default-opacity-in-transition);
 }
 .select-button.active {
-    background: var(--select-button-active-bg);
-    border: var(--select-button-active-bg);
+    background: var(--select-button-active-bg-color);
+    border: var(--select-button-active-bg-color);
 }
 
 .select-button.active i {

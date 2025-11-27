@@ -14,46 +14,70 @@ export default function HomePage() {
                                 <p>Atual (Disciplina - Professor):</p>
                                 <h2>Tema da Aula Ainda Não Definido</h2>
                             </div>
-                            <div  className="files">
+                            <div className="files">
                                 <h6>Arquivos</h6>
-                                <div className="files-list">
-                                    <button>
-                                    <i className="bi bi-file-earmark"></i>
-                                        Arquivo 1
-                                    </button>
-                                    <button>
-                                        <i className="bi bi-file-earmark"></i>
-                                        Arquivo 2
-                                    </button>
-                                    <button>
-                                        <i className="bi bi-file-earmark"></i>
-                                        Arquivo 3
-                                    </button>
-                                </div>
+                                <ul className="files-list list">
+                                    <li>
+                                        <button>
+                                            <i className="bi bi-file-earmark"></i>
+                                            Arquivo
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button>
+                                            <i className="bi bi-file-earmark"></i>
+                                            Arquivo
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button>
+                                            <i className="bi bi-file-earmark"></i>
+                                            Arquivo
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button>
+                                            <i className="bi bi-file-earmark"></i>
+                                            Arquivo
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button>
+                                            <i className="bi bi-file-earmark"></i>
+                                            Arquivo
+                                        </button>
+                                    </li>
+                                </ul>
                             </div>
                             <div className="shortcuts">
                                 <h6>Atalhos</h6>
-                                <div className="shortcuts-list">
-                                    <button>
-                                        <i className="bi bi-book"></i>
-                                        Disciplina
-                                    </button>
-                                    <button>
-                                        <i className="bi bi-clipboard"></i>
-                                        Tarefas
-                                    </button>
-                                    <button>
-                                        <i className="bi bi-journal"></i>
-                                        Caderno
-                                    </button>
-                                </div>
+                                <ul className="shortcuts-list list">
+                                    <li>
+                                        <button>
+                                            <i className="bi bi-book"></i>
+                                            Disciplina
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button>
+                                            <i className="bi bi-clipboard"></i>
+                                            Tarefas
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button>
+                                            <i className="bi bi-journal"></i>
+                                            Caderno
+                                        </button>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        <div className="previous-class">
+                        <div className="previous-class first-layer-element">
                             <p>Anterior:</p>
                             <h5>Disciplina</h5>
                         </div>
-                        <div className="next-class">
+                        <div className="next-class first-layer-element">
                             <p>Próxima:</p>
                             <h5>Disciplina</h5>
                         </div>
@@ -63,10 +87,19 @@ export default function HomePage() {
                 <hr/>
 
                 <h2>Agenda de Hoje</h2>
-                <div className="allClasses">
-                    <div className="class">
-                        <h4>Tema da Aula Não Definido</h4>
-                        <p>Prof. Nome</p>
+                <div className="all-classes">
+                    <div className="class first-layer-element">
+                        <div>
+                            <div className="class-time">
+                                <i className="bi bi-clock"></i>
+                                <p>X:XX - X:XX</p>
+                            </div>
+                            <p className="class-subject">Disciplina</p>
+                        </div>
+                        <div>
+                            <h5>Tema da Aula Não Definido</h5>
+                            <p>Prof. Nome</p>
+                        </div>
                     </div>
                 </div>
             </section>

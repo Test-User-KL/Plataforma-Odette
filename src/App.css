@@ -11,9 +11,7 @@
 :root {
 	/* Paleta de Cores */
 	--primary-emphasis: rgb(0, 30, 200);
-	--light-primary-emphasis: rgb(20, 50, 220);
 	--secondary-emphasis: rgb(250, 140, 20);
-	--light-secondary-emphasis: rgb(250, 160, 40);
 
 	--red: var(--lred);
 	--orange: var(--lorange);
@@ -37,7 +35,7 @@
 	--dorange: rgb(220, 75, 20);
 	--dyellow: rgb(220, 130, 0);
 	--dgreen: rgb(0, 150, 0);
-	--dturquoise: rgb(0, 180, 130);
+	--dturquoise: rgb(0, 160, 115);
 	--dblue: rgb(0, 25, 170);
 	--dpurple: rgb(85, 0, 200);
 	--dpink: rgb(200, 0, 90);
@@ -90,41 +88,53 @@
 	--white: rgb(250, 250, 255);
 
 	/* Body */
-	--body-bg: var(--gray1);
+	--body-bg-color: var(--gray1);
+
+	/* Div */ 
+	--div-bg-color: var(--gray1);
+	--div-hover-bg-color: var(--gray4);
+	--div-bd-color: var(--gray5);
 
 	/* Botões */
-	--button-bg: var(--primary-emphasis);
-	--button-bg-hover: var(--light-primary-emphasis);
-	--button-bg-special: var(--secondary-emphasis);
-	--button-bg-special-hover: var(--light-secondary-emphasis);
-	--button-bd: var(--gray5);
+	--button-bg-primary-color: var(--primary-emphasis);
+	--button-bd-primary-color: var(--light);
+
+	--button-bg-secondary-color: var(--gray1);
+	--button-bd-secondary-color: var(--gray4);
+
+	--highlight-button-bg-color: var(--secondary-emphasis);
+
 	--button-br: 0.5rem;
 
 	/* Header */
 	--header-height: 2.75rem;
 	--header-spaces: 0.5rem;
-	--header-bg: var(--primary-emphasis);
-	--header-button-bg: var(--gray1);
-	--header-button-bd: var(--gray4);
+	--header-bg-color: var(--primary-emphasis);
+	--header-button-bg-color: var(--gray1);
+	--header-button-bd-color: var(--gray4);
 
 	/* Section */
 	--minor-padding-section: 2.5rem;
 	--major-padding-section: 5rem;
 
 	/* Dialog */
-	--dialog-bg: var(--gray1);
-	--dialog-bd: var(--gray4);
+	--dialog-bg-color: var(--gray1);
+	--dialog-bd-color: var(--gray4);
 
 	/* Outros */
 	--header-nav-z-index: 9998;
 
-	/* Geral */ 
+	/* Font */
 	--default-fs: 0.9rem;
 	--default-primary-fc: rgb(0, 0, 0);
 	--default-secondary-fc: rgb(130, 130, 130);
+	
+	/* Box Shadow */
 	--light-bs: 0 0 0.5rem rgba(0, 0, 0, 0.125);
 	--default-bs: 0 0 1rem rgba(0, 0, 0, 0.25);
-	--border: var(--gray5);
+
+	/* Border */
+	--hr-color: var(--gray5);
 	--border-width: 1px;
 	--separator-width: 2px;
 
@@ -133,6 +143,7 @@
 	--default-size-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, scale 0.3s ease-in-out, transform 0.3s ease-in-out;
 	--default-spaces-transition: margin 0.3s ease-in-out, padding 0.3s ease-in-out, gap 0.3s ease-in-out;
 	--default-height-transition: height 0.3s ease-in-out;
+	--default-filter-transition: filter 0.3s ease-in-out;
 	--default-opacity-in-transition: opacity 0.3s ease-in-out, visibility 0s, scale 0.3s;
 	--default-opacity-out-transition: opacity 0.3s ease-in-out, visibility 0s 0.3s, scale 0.3s;
 }
@@ -177,41 +188,51 @@ h6 { font-size: 1.25rem; }
     background: var(--primary-emphasis); 
 }
 
-button {
+.first-layer-element {
+	background: var(--div-bg-color);
+	border: var(--border-width) solid var(--div-bd-color);
+	outline: var(--separator-width) dashed var(--div-bd-color);
+	outline-offset: -0.75rem;
+	box-shadow: var(--light-bs);
+}
+
+button, .tab-content-title a {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding: 1rem;
 	gap: 0.4rem;
-	background: var(--button-bg);
-	outline: var(--separator-width) dashed var(--light);
-	outline-offset: -0.5rem;
-	border: var(--border-width) solid var(--light);
+	background: var(--button-bg-primary-color);
+	border: var(--border-width) solid var(--button-bd-primary-color);
 	box-shadow: var(--light-bs);
+	outline: var(--separator-width) dashed var(--button-bd-primary-color);
+	outline-offset: -0.5rem;
 	border-radius: var(--button-br);
-	transition: var(--default-color-transition);
 	cursor: pointer;
 	color: var(--default-primary-fc);
 	font-size: var(--default-fs);
-}
-
-button:hover {
-	background: var(--button-bg-hover);
+	overflow: hidden;
+	transition: var(--default-filter-transition);
 }
 
 button.special {
-	background: var(--button-bg-special);
+	background: var(--highlight-button-bg-color);
 	color: var(--white);
 }
 
-button.special:hover {
-	background: var(--button-bg-special-hover);
+li > button {
+	background: var(--button-bg-secondary-color);
+	border: var(--border-width) solid var(--button-bd-secondary-color);
+}
+
+ul.list {
+	list-style: none;
 }
 
 hr {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
-	border: var(--border-width) solid var(--border);
+	border: var(--border-width) solid var(--hr-color);
 	border-radius: 0.1rem;
 }
 
@@ -219,9 +240,9 @@ dialog {
 	display: flex;
 	flex-direction: column;
 	position: fixed;
-	background: var(--dialog-bg);
-	border: var(--border-width) solid var(--dialog-bd);
-	outline: var(--separator-width) dashed var(--dialog-bd);
+	background: var(--dialog-bg-color);
+	border: var(--border-width) solid var(--dialog-bd-color);
+	outline: var(--separator-width) dashed var(--dialog-bd-color);
 	outline-offset: -0.5rem;
 	padding: 1.25rem;
 	border-radius: 1rem;
@@ -269,7 +290,7 @@ dialog .dialog-select {
 }
 
 body {
-	background: var(--body-bg);
+	background: var(--body-bg-color);
 	overflow: hidden;
 }
 
@@ -329,7 +350,7 @@ body {
 	gap: var(--header-spaces);
 	top: 0;
 	left: 0;
-	background: var(--header-bg);
+	background: var(--header-bg-color);
 	z-index: var(--header-nav-z-index);
 }
 
@@ -340,8 +361,8 @@ body {
 	height: 2rem;
 	left: 0;
 	top: var(--header-height);
-	background-color: var(--header-button-bg);
-	border-bottom: var(--border-width) solid var(--header-button-bd);
+	background: var(--header-button-bg-color);
+	border-bottom: var(--border-width) solid var(--header-button-bd-color);
 }
 
 .tab-header :is(#new-tab, .tab-button.active-tab) {
@@ -403,7 +424,7 @@ body {
 .tab-header nav .tab-button .tab-text i { font-size: 0.9rem; }
 
 .tab-header nav .tab-button.active-tab {
-	background: var(--header-button-bg);
+	background: var(--header-button-bg-color);
 	padding-bottom: 0.5rem;
 	box-shadow: var(--light-bs);
 	color: var(--default-primary-fc);
@@ -474,7 +495,7 @@ main section {
 	width: 3rem;
 	height: 3rem;
 	border-radius: 0.75rem;
-	background: var(--button-bg);
+	background: var(--highlight-button-bg-color);
 	outline: var(--separator-width) dashed var(--light);
 	outline-offset: -0.5rem;
 	box-shadow: var(--default-bs);
@@ -486,10 +507,6 @@ main section {
 
 .tab-content-title a i {
 	color: var(--white);
-}
-
-.tab-content-title a:hover {
-	background: var(--button-bg-hover);
 }
 
 .tab-content-title h1 { width: 100%; }

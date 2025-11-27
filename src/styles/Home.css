@@ -1,10 +1,8 @@
 :root {
     /* Main - Aulas*/
-	--current-class-list-bg: var(--light);
-	--current-class-list-button-bg: var(--gray1);
-	--current-class-list-button-hover-bg: var(--gray2);
-	--previous-next-class-bg: var(--gray1);
-	--previous-next-class-bd: var(--gray5);
+	--current-class-bg-color: var(--primary-emphasis);
+	--current-class-list-bg-color: var(--light);
+	
 }
 
 /* Media Queries */
@@ -61,12 +59,7 @@
 	}
 }
 
-/* Main */
-.my-week {
-	min-width: 0;
-	width: 100%;
-}
-
+/* My Week */
 .my-week .summary {
 	display: grid;
 	grid-template-areas: 
@@ -107,7 +100,7 @@
 	grid-area: current;
 	height: fit-content;
 	padding: 2rem;
-	background: var(--primary-emphasis);
+	background: var(--current-class-bg-color);
 	border: var(--border-width) solid var(--light);
 	outline: var(--separator-width) dashed var(--light);
 	outline-offset: -0.75rem;
@@ -147,12 +140,13 @@
 .my-week .summary .current-previous-next-class .current-class .shortcuts {
 	display: flex;
 	flex-direction: column;
-	background: var(--current-class-list-bg);
+	background: var(--current-class-list-bg-color);
 	border: var(--border-width) solid var(--light);
 	box-shadow: var(--light-bs);
 	border-radius: 0.75rem;
 	padding: 1rem;
 	gap: 0.5rem;
+	min-width: 0;
 }
 
 .my-week .summary .current-previous-next-class .current-class .shortcuts .shortcuts-list,
@@ -168,19 +162,17 @@
 	display: none;
 }
 
-.my-week .summary .current-previous-next-class .current-class .shortcuts .shortcuts-list button,
-.my-week .summary .current-previous-next-class .current-class .files .files-list button {
-	background: var(--current-class-list-button-bg);
-	border: var(--border-width) solid var(--light);
-	box-shadow: var(--light-bs);
+.my-week .summary .current-previous-next-class .current-class .shortcuts .shortcuts-list :is(li, li button),
+.my-week .summary .current-previous-next-class .current-class .files .files-list li :is(li, li button) {
 	height: 100%;
+	width: 100%;
 	min-width: 6.5rem;
-	padding: 0.75rem 1rem;
+	filter: none;
+	transition: var(--default-color-transition);
 }
 
 .my-week .summary .current-previous-next-class .current-class .files .files-list button {
 	flex-direction: column;
-	width: 6.5rem;
 }
 
 .my-week .summary .current-previous-next-class .current-class .files .files-list button i {
@@ -189,7 +181,7 @@
 
 .my-week .summary .current-previous-next-class .current-class .shortcuts .shortcuts-list button:hover,
 .my-week .summary .current-previous-next-class .current-class .files .files-list button:hover {
-	background: var(--current-class-list-button-hover-bg);
+	background: var(--div-hover-bg-color);
 }
 
 .my-week .summary .current-previous-next-class .previous-class, 
@@ -199,10 +191,20 @@
 	align-items: center;
 	justify-content: center;
 	padding: 1rem;
-	background: var(--previous-next-class-bg);
-	border: var(--border-width) solid var(--previous-next-class-bd);
-	outline: var(--separator-width) dashed var(--previous-next-class-bd);
-	outline-offset: -0.75rem;
-	box-shadow: var(--light-bs);
 	border-radius: 1.25rem;
+}
+
+.my-week .all-classes {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+}
+
+.my-week .all-classes .class {
+	display: flex;
+	flex-direction: column;
+	background: var(--div-bg-color);
+	border: var(--border-width) solid var(--div-bd-color);
+	padding: 2rem;
+	border-radius: 1.25rem;
+	overflow: hidden;
 }
