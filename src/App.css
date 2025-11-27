@@ -28,7 +28,7 @@
 	--lorange: rgb(250, 70, 20);
 	--lyellow: rgb(250, 140, 0);
 	--lgreen: rgb(0, 180, 0);
-	--lturquoise: rgb(0, 180, 80);
+	--lturquoise: rgb(0, 180, 120);
 	--lblue: rgb(0, 30, 200);
 	--lpurple: rgb(50, 0, 230);
 	--lpink: rgb(230, 0, 100);
@@ -37,7 +37,7 @@
 	--dorange: rgb(255, 95, 45);
 	--dyellow: rgb(255, 160, 30);
 	--dgreen: rgb(25, 200, 25);
-	--dturquoise: rgb(25, 200, 100);
+	--dturquoise: rgb(25, 200, 140);
 	--dblue: rgb(30, 55, 220);
 	--dpurple: rgb(75, 25, 245);
 	--dpink: rgb(245, 25, 125);
@@ -517,7 +517,7 @@ main section {
 	background: var(--main-nav-bg);
 	border: var(--border-width) solid var(--main-nav-bd);
 	box-shadow: var(--light-bs);
-	backdrop-filter: blur(0.15rem);
+	backdrop-filter: blur(0.25rem);
 	overflow-x: auto;
 	z-index: var(--header-nav-z-index);
 }
