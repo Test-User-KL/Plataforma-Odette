@@ -7,7 +7,7 @@ import MainNav from "./components/MainNav.tsx";
 import ColorSelector from "./components/ColorSelector.tsx";
 import HomePage from "./pages/HomePage";
 import SubjectsPage from "./pages/SubjectsPage";
-import SettingsPage from "./pages/Settings";
+import SettingsPage from "./pages/SettingsPage.tsx";
 import AccountPage from "./pages/AccountPage";
 import type { Tab, TabView } from "./types/tabs";
 import type { ColorTarget, ThemeMode } from "./types/theme";
