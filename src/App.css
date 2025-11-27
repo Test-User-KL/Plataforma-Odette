@@ -25,22 +25,22 @@
 	--pink: var(--lpink);
 
 	--lred: rgb(230, 0, 0);
-	--lorange: rgb(250, 70, 20);
-	--lyellow: rgb(250, 140, 0);
+	--lorange: rgb(250, 80, 20);
+	--lyellow: rgb(250, 150, 0);
 	--lgreen: rgb(0, 180, 0);
-	--lturquoise: rgb(0, 180, 120);
+	--lturquoise: rgb(0, 190, 145);
 	--lblue: rgb(0, 30, 200);
 	--lpurple: rgb(50, 0, 230);
 	--lpink: rgb(230, 0, 100);
 
-	--dred: rgb(245, 25, 25);
-	--dorange: rgb(255, 95, 45);
-	--dyellow: rgb(255, 160, 30);
-	--dgreen: rgb(25, 200, 25);
-	--dturquoise: rgb(25, 200, 140);
-	--dblue: rgb(30, 55, 220);
-	--dpurple: rgb(75, 25, 245);
-	--dpink: rgb(245, 25, 125);
+	--dred: rgb(230, 0, 0);
+	--dorange: rgb(250, 80, 20);
+	--dyellow: rgb(250, 150, 0);
+	--dgreen: rgb(0, 180, 0);
+	--dturquoise: rgb(0, 190, 145);
+	--dblue: rgb(0, 30, 200);
+	--dpurple: rgb(50, 0, 230);
+	--dpink: rgb(230, 0, 100);
 
 	--lgray1: rgb(245, 245, 250);
 	--lgray2: rgb(235, 235, 240);
@@ -109,7 +109,7 @@
 
 	/* Main Nav */
 	--main-nav-height: 2.5rem;
-	--main-nav-bg: var(--tgray3);
+	--main-nav-bg: var(--tgray1);
 	--main-nav-bd: var(--tgray5);
 	--main-nav-a-hover-bg: var(--tgray6);
 	--main-nav-a-active-bg: var(--primary-emphasis);
@@ -136,7 +136,7 @@
 	--separator-width: 2px;
 
 	/* Transições */
-	--default-transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out, color 0.3s ease-in-out;
+	--default-color-transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out, color 0.3s ease-in-out;
 	--default-size-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, scale 0.3s ease-in-out, transform 0.3s ease-in-out;
 	--default-spaces-transition: margin 0.3s ease-in-out, padding 0.3s ease-in-out, gap 0.3s ease-in-out;
 	--default-height-transition: height 0.3s ease-in-out;
@@ -196,7 +196,7 @@ button {
 	border: var(--border-width) solid var(--light);
 	box-shadow: var(--light-bs);
 	border-radius: var(--button-br);
-	transition: var(--default-transition);
+	transition: var(--default-color-transition);
 	cursor: pointer;
 	color: var(--default-primary-fc);
 	font-size: var(--default-fs);
@@ -394,7 +394,7 @@ body {
 	border-radius: var(--button-br) var(--button-br) 0 0;
 	flex-shrink: 0;
 	cursor: pointer;
-	transition: var(--default-transition), var(--default-size-transition), var(--default-spaces-transition);
+	transition: var(--default-color-transition), var(--default-size-transition), var(--default-spaces-transition);
 }
 
 .tab-header nav .tab-button:not(.active-tab) * {
@@ -437,16 +437,16 @@ main {
 	height: 100vh;
 	--s: 28px;       
     --w: 1px;     
-    background: var(--gray2);
+    background: var(--gray1);
     background-image:
 		repeating-linear-gradient(
 			to bottom,
-			var(--gray4) 0 var(--w),
+			var(--gray3) 0 var(--w),
 			transparent var(--w) var(--s)
 		),
 		repeating-linear-gradient(
 			to right,
-			var(--gray4) 0 var(--w),
+			var(--gray3) 0 var(--w),
 			transparent var(--w) var(--s)
 		);
 	background-position: var(--w);
@@ -488,7 +488,7 @@ main section {
     color: var(--white); 
 	flex-shrink: 0;
 	text-decoration: none;
-	transition: var(--default-transition);
+	transition: var(--default-color-transition);
 }
 
 .tab-content-title a i {
@@ -548,7 +548,7 @@ main section {
 	padding: 0 1rem;
 	text-decoration: none;
 	font-size: var(--default-fs);
-	transition: var(--default-transition);
+	transition: var(--default-color-transition);
 }
 
 .main-nav a:hover {
