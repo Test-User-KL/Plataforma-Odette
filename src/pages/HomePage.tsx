@@ -12,7 +12,7 @@ export default function HomePage() {
                         <div className="current-class">
                             <div className="texts">
                                 <p>Atual (Disciplina - Professor):</p>
-                                <h2>Tema da Aula Ainda Não Definido</h2>
+                                <h2>Esta aula não possui tema</h2>
                             </div>
                             <div className="files">
                                 <h6>Arquivos</h6>
@@ -97,7 +97,7 @@ export default function HomePage() {
                             <p className="class-subject">Disciplina</p>
                         </div>
                         <div>
-                            <h5>Tema da Aula Não Definido</h5>
+                            <h5>O tema da aula ainda não foi definido</h5>
                             <p>Prof. Nome</p>
                         </div>
                     </div>
