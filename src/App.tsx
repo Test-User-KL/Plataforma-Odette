@@ -323,12 +323,12 @@ export default function App() {
 			case "settings":
 				return (
 					<SettingsPage
-							theme={theme}
-							primaryColor={primaryColor}
-							secondaryColor={secondaryColor}
-							changeTab={changeTab}
-							openColorSelector={openColorSelector}
-							handleThemeChange={handleThemeChange}
+						theme={theme}
+						primaryColor={primaryColor}
+						secondaryColor={secondaryColor}
+						changeTab={changeTab}
+						openColorSelector={openColorSelector}
+						handleThemeChange={handleThemeChange}
 					/>
 				);
 			case "account":
@@ -341,24 +341,24 @@ export default function App() {
 	return (
 		<div ref={appRef} className="app-root">
 			<header className="tab-header">
-					<button
-						id="new-tab"
-						onClick={handleNewTab}
-						className="new-tab-button special"
-						title="Nova aba"
-					>
-						<i className="fa-solid fa-plus"></i>
-					</button>
+				<button
+					id="new-tab"
+					onClick={handleNewTab}
+					className="new-tab-button special"
+					title="Nova aba"
+				>
+					<i className="fa-solid fa-plus"></i>
+				</button>
 
-					<TabNavigation
-						tabs={tabs}
-						activeTabId={activeTabId}
-						onSelect={setActiveTabId}
-						onClose={handleCloseTab}
-						onDragStart={handleDragStart}
-						onDragOver={handleDragOver}
-						onDrop={handleDrop}
-					/>
+				<TabNavigation
+					tabs={tabs}
+					activeTabId={activeTabId}
+					onSelect={setActiveTabId}
+					onClose={handleCloseTab}
+					onDragStart={handleDragStart}
+					onDragOver={handleDragOver}
+					onDrop={handleDrop}
+				/>
 			</header>
 
 			<main className="tab-content">
