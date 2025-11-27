@@ -313,7 +313,8 @@ export default function App() {
 		setDraggedTabId(null);
 	}
 
-	const activeTab = tabs.find((t) => t.id === activeTabId);
+        const activeTab = tabs.find((t) => t.id === activeTabId);
+        const activeView = activeTab?.view ?? "home";
 
 	function renderActiveTabContent(tab: Tab) {
 		switch (tab.view) {
@@ -373,7 +374,7 @@ export default function App() {
 				/>
 			</main>
 
-			<MainNav changeTab={changeTab} />
-		</div>
-	);
+                        <MainNav changeTab={changeTab} activeView={activeView} />
+                </div>
+        );
 }
