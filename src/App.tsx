@@ -3,7 +3,7 @@ import "./App.css";
 import "./styles/Home.css";
 import "./styles/Settings.css";
 
-type TabView = "home" | "settings" | "account";
+type TabView = "home" | "subjects" | "settings" | "account";
 
 type Tab = {
 	id: number;
@@ -99,6 +99,13 @@ export default function App() {
 		root.style.setProperty("--gray4", `var(--${grayPrefix}gray4)`);
 		root.style.setProperty("--gray5", `var(--${grayPrefix}gray5)`);
 		root.style.setProperty("--gray6", `var(--${grayPrefix}gray6)`);
+
+		root.style.setProperty("--tgray1", `var(--t${grayPrefix}gray1)`);
+		root.style.setProperty("--tgray2", `var(--t${grayPrefix}gray2)`);
+		root.style.setProperty("--tgray3", `var(--t${grayPrefix}gray3)`);
+		root.style.setProperty("--tgray4", `var(--t${grayPrefix}gray4)`);
+		root.style.setProperty("--tgray5", `var(--t${grayPrefix}gray5)`);
+		root.style.setProperty("--tgray6", `var(--t${grayPrefix}gray6)`);
 
 		root.style.setProperty("--red", `var(--${grayPrefix}red)`);
 		root.style.setProperty("--orange", `var(--${grayPrefix}orange)`);
@@ -244,21 +251,30 @@ export default function App() {
 				if (tab.id !== activeTabId) return tab;
 		
 				if (targetView === "home") {
-				return {
-					...tab,
-					view: "home",
-					title: "Página Inicial",
-					iconClass: "fa-solid fa-home",
-				};
+					return {
+						...tab,
+						view: "home",
+						title: "Página Inicial",
+						iconClass: "fa-solid fa-home",
+					};
+				}
+
+				if (targetView === "subjects") {
+					return {
+						...tab,
+						view: "subjects",
+						title: "Disciplinas",
+						iconClass: "fa-brands fa-microsoft",
+					};
 				}
 		
 				if (targetView === "settings") {
-				return {
-					...tab,
-					view: "settings",
-					title: "Configurações",
-					iconClass: "fa-solid fa-gear",
-				};
+					return {
+						...tab,
+						view: "settings",
+						title: "Configurações",
+						iconClass: "fa-solid fa-gear",
+					};
 				}
 		
 				return {
@@ -403,21 +419,41 @@ export default function App() {
 			);	
 		}
 
+		if (tab.view === "subjects") {
+			return (
+				<div id="subjects" className="settings-page page">
+					<header className="tab-content-title">
+						<a 
+							className="back-btn"
+							href="#home"
+							onClick={(e) => {
+								e.preventDefault();
+								changeTab("home");
+							}}
+						>
+							<i className="fa-solid fa-arrow-left"></i>
+						</a>
+						<h1>Disciplinas</h1>
+					</header>
+				</div>
+			)
+		}
+
 		if (tab.view === "settings") {
 			return (
 				<div id="settings" className="settings-page page">
 					<header className="tab-content-title">
-							<a 
-								className="back-btn"
-								href="#home"
-								onClick={(e) => {
-									e.preventDefault();
-									changeTab("home");
-								}}
-							>
-								<i className="fa-solid fa-arrow-left"></i>
-							</a>
-							<h1>Configurações</h1>
+						<a 
+							className="back-btn"
+							href="#home"
+							onClick={(e) => {
+								e.preventDefault();
+								changeTab("home");
+							}}
+						>
+							<i className="fa-solid fa-arrow-left"></i>
+						</a>
+						<h1>Configurações</h1>
 					</header>
 
 					<section id="customization-settings" className="settings-group">
@@ -554,17 +590,17 @@ export default function App() {
 			return (
 				<div id="account" className="account-page page">
 					<header className="tab-content-title">
-							<a 
-								className="back-btn"
-								href="#home"
-								onClick={(e) => {
-									e.preventDefault();
-									changeTab("home");
-								}}
-							>
-								<i className="fa-solid fa-arrow-left"></i>
-							</a>
-							<h1>Conta</h1>
+						<a 
+							className="back-btn"
+							href="#home"
+							onClick={(e) => {
+								e.preventDefault();
+								changeTab("home");
+							}}
+						>
+							<i className="fa-solid fa-arrow-left"></i>
+						</a>
+						<h1>Conta</h1>
 					</header>
 				</div>
 			);
@@ -637,21 +673,26 @@ export default function App() {
 			</main>
 
 			<nav className="main-nav">
-				<a href="#my-week">
-					<i className="fa-regular fa-clock"></i>
-					<span>Aulas</span>
+				<a 
+					href="#home"
+					onClick={(e) => {
+						e.preventDefault();
+						changeTab("home");
+					}}
+				>
+					<i className="fa-solid fa-home"></i>
+					<span>Início</span>
 				</a>
-				<a href="#my-tasks">
-					<i className="fa-solid fa-clipboard-list"></i>
-					<span>Tarefas</span>
-				</a>
-				<a href="#my-subjects">
-					<i className="fa-solid fa-graduation-cap"></i>
+				<a 
+					href="#subjects"
+					onClick={(e) => {
+						e.preventDefault();
+						changeTab("subjects");
+					}}
+				>
+					<i className="fa-brands fa-microsoft"></i>
 					<span>Disciplinas</span>
 				</a>
-
-				<span className="separator"></span>
-
 				<a 
 					href="#settings"
 					onClick={(e) => {

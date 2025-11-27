@@ -7,18 +7,6 @@
     --select-button-bd: var(--gray5);
 }
 
-@media (max-width: 959px) {
-    .settings-page header {
-        padding: 0 var(--minor-padding-section);
-    }
-}
-
-@media (min-width: 960px) {
-    .settings-page header {
-        padding: 0 var(--major-padding-section);
-    }
-}
-
 .color-selector {
     align-items: center;
     width: fit-content;
@@ -273,7 +261,7 @@
     background: var(--select-button-bg);
     border: var(--border-width) solid var(--select-button-bd);
     box-shadow: none;
-    transition: var(--default-color-transition);
+    transition: var(--default-transition);
 }
 
 .select-button:hover {
@@ -286,8 +274,8 @@
     transition: var(--default-opacity-in-transition);
 }
 .select-button.active {
-    background-color: var(--select-button-active-bg);
-    border-color: var(--select-button-active-bg);
+    background: var(--select-button-active-bg);
+    border: var(--select-button-active-bg);
 }
 
 .select-button.active i {
