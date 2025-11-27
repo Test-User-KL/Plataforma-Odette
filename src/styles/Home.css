@@ -152,8 +152,8 @@
 .my-week .summary .current-previous-next-class .current-class .shortcuts .shortcuts-list,
 .my-week .summary .current-previous-next-class .current-class .files .files-list {
 	display: flex;
+	flex: 1;
 	gap: 0.5rem;
-	height: 100%;
 	overflow-x: auto;
 }
 
@@ -163,7 +163,7 @@
 }
 
 .my-week .summary .current-previous-next-class .current-class .shortcuts .shortcuts-list :is(li, li button),
-.my-week .summary .current-previous-next-class .current-class .files .files-list li :is(li, li button) {
+.my-week .summary .current-previous-next-class .current-class .files .files-list :is(li, li button) {
 	height: 100%;
 	width: 100%;
 	min-width: 6.5rem;

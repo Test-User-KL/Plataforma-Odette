@@ -1,7 +1,7 @@
 * {
 	margin: 0;
 	padding: 0;
-	line-height: 1.05;
+	line-height: 1.2;
 	font-family: 'Inter', 'sans-serif';
 	box-sizing: border-box;
 	scroll-behavior: smooth;
@@ -35,7 +35,7 @@
 	--dorange: rgb(230, 65, 20);
 	--dyellow: rgb(230, 140, 0);
 	--dgreen: rgb(0, 160, 0);
-	--dturquoise: rgb(0, 160, 115);
+	--dturquoise: rgb(0, 170, 135);
 	--dblue: rgb(0, 30, 210);
 	--dpurple: rgb(90, 0, 210);
 	--dpink: rgb(210, 0, 95);
