@@ -376,7 +376,7 @@ export default function App() {
 				/>
 			</main>
 
-                        <MainNav changeTab={changeTab} activeView={activeView} />
-                </div>
-        );
+			<MainNav changeTab={changeTab} activeView={activeView} />
+		</div>
+    );
 }

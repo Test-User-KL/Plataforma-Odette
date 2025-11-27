@@ -3,7 +3,7 @@ export default function HomePage() {
         <div id="home" className="home-page page">
             <section id="my-week" className="my-week">
                 <div className="summary">
-                    <h1>Aulas de Hoje</h1>
+                    <h1>Suas Aulas</h1>
                     <button className="special show-schedule">
                         <i className="fa-solid fa-calendar"></i>
                         Programação Semanal
@@ -12,7 +12,7 @@ export default function HomePage() {
                         <div className="current-class">
                             <div className="texts">
                                 <p>Atual (Disciplina - Professor):</p>
-                                <h2>Tema da Aula</h2>
+                                <h2>Tema da Aula Ainda Não Definido</h2>
                             </div>
                             <div  className="files">
                                 <h6>Arquivos</h6>
@@ -62,7 +62,12 @@ export default function HomePage() {
 
                 <hr/>
 
-                <h2>Todas as Aulas</h2>
+                <h2>Agenda de Hoje</h2>
+                <div className="allClasses">
+                    <div className="class">
+                        <h4>Tema da Aula Não Definido</h4>
+                    </div>
+                </div>
             </section>
 
             <section id="my-tasks" className="my-tasks">

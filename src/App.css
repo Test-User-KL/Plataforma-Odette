@@ -274,7 +274,7 @@ body {
 }
 
 /* Media Queries */
-@media (max-width: 959px) {
+@media (max-width: 999px) {
 	main section {
 		padding: 0 var(--minor-padding-section);
 	}
@@ -289,7 +289,7 @@ body {
     }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1000px) {
 	main section {
 		padding: 0 var(--major-padding-section);
 	}
