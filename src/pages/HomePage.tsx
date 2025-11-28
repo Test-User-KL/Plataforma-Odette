@@ -73,11 +73,11 @@ export default function HomePage() {
                                 </ul>
                             </div>
                         </div>
-                        <div className="previous-class first-layer-element">
+                        <div className="previous-class card">
                             <p>Anterior:</p>
                             <h5>Disciplina</h5>
                         </div>
-                        <div className="next-class first-layer-element">
+                        <div className="next-class card">
                             <p>Próxima:</p>
                             <h5>Disciplina</h5>
                         </div>
@@ -88,7 +88,7 @@ export default function HomePage() {
 
                 <h2>Agenda de Hoje</h2>
                 <div className="all-classes">
-                    <div className="class first-layer-element">
+                    <div className="class card">
                         <div>
                             <div className="class-time">
                                 <i className="bi bi-clock"></i>

@@ -109,8 +109,8 @@
 	--button-bg-primary-color: var(--primary-emphasis);
 	--button-bd-primary-color: var(--light);
 
-	--button-bg-secondary-color: var(--gray2);
-	--button-bd-secondary-color: var(--gray4);
+	--button-bg-secondary-color: var(--gray1);
+	--button-bd-secondary-color: var(--gray3);
 
 	--highlight-button-bg-color: var(--secondary-emphasis);
 
@@ -169,7 +169,7 @@ h1, h2, h3 {
 
 h1 { 
 	font-size: 3rem; 
-	border-bottom: 3px solid var(--secondary-emphasis);
+	filter: contrast(2.1) brightness(0.97);
 }
 h2 { font-size: 2.5rem; }
 h3 { font-size: 2rem; }
@@ -198,7 +198,7 @@ h6 { font-size: 1.25rem; }
     background: var(--primary-emphasis); 
 }
 
-.first-layer-element {
+.card {
 	background: var(--div-bg-color);
 	border: var(--border-width) solid var(--div-bd-color);
 	outline: var(--separator-width) dashed var(--div-bd-color);
@@ -345,6 +345,11 @@ body {
 	}
 }
 
+@keyframes grid-move {
+	from { background-position: 0 0; }
+	to { background-position: 2rem 2rem; }
+}
+
 .animate-fade-in {
 	animation: fade-in-up 0.6s ease-out both;
 	animation-delay: calc(var(--fade-order, 0) * 0.025s);
@@ -459,6 +464,8 @@ body {
 main {
 	overflow-x: hidden;
 	overflow-y: auto;
+	position: relative;
+	isolation: isolate;
 	padding-top: calc(var(--border-width) + var(--header-height) + 2rem);
 	height: 100vh;
 	--s: 28px;       
@@ -478,6 +485,20 @@ main {
 	background-position: var(--w);
     background-size: var(--s) var(--s);
 	border-top: var(--w) solid var(--gray4);
+	animation: grid-move 40s linear infinite;
+}
+
+main::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 0;
+	background-image:
+	  repeating-radial-gradient(circle at 0 0, #0001 0, #0001 1px, transparent 1px, transparent 100%),
+	  repeating-radial-gradient(circle at 100% 100%, #0001 0, #0001 1px, transparent 1px, transparent 100%);
+	opacity: 0.35;          /* intensidade do ruído */
+	mix-blend-mode: multiply;
 }
 
 main > div {
