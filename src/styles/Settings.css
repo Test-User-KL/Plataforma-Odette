@@ -1,6 +1,6 @@
 :root {
     --setting-option-bg-color: var(--gray2);
-    --setting-option-bd-color: var(--gray5);
+    --setting-option-bd-color: var(--gray4);
     --example-bg-color: var(--gray1);
     --select-button-bg-color: var(--gray1);
     --select-button-active-bg-color: var(--secondary-emphasis);
@@ -165,12 +165,12 @@
     background-image:
 		repeating-linear-gradient(
 			to bottom,
-			var(--lgray4) 0 var(--w),
+			var(--lgray3) 0 var(--w),
 			transparent var(--w) var(--s)
 		),
 		repeating-linear-gradient(
 			to right,
-			var(--lgray4) 0 var(--w),
+			var(--lgray3) 0 var(--w),
 			transparent var(--w) var(--s)
 		);
     background-size: var(--s) var(--s);

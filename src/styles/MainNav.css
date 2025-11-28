@@ -4,7 +4,7 @@
 	--main-nav-bg: var(--tgray1);
 	--main-nav-bd: var(--tgray5);
 	--main-nav-a-hover-bg: var(--tgray4);
-	--main-nav-a-active-bg: var(--primary-emphasis);
+	--main-nav-a-active-bg: color-mix(in srgb, var(--primary-emphasis) 90%, white);
 }
 
 .main-nav {

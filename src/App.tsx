@@ -95,11 +95,15 @@ export default function App() {
 			root.style.setProperty("--default-secondary-fc", "rgb(170, 170, 170)");
 			root.style.setProperty("--example-bg", "var(--dgray1)");
 			root.style.setProperty("--setting-option-bg", "var(--dgray2)");
+			root.style.setProperty("--medium-emphasis-percentage-mode", "55%");
+			root.style.setProperty("--light-emphasis-percentage-mode", "75%");
 		} else {
 			root.style.setProperty("--default-primary-fc", "rgb(0, 0, 5)");
 			root.style.setProperty("--default-secondary-fc", "rgb(90, 90, 90)");
 			root.style.setProperty("--example-bg", "var(--lgray1)");
 			root.style.setProperty("--setting-option-bg", "var(--lgray2)");
+			root.style.setProperty("--medium-emphasis-percentage-mode", "40%");
+			root.style.setProperty("--light-emphasis-percentage-mode", "25%");
 		}
 	}
 

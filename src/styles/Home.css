@@ -197,8 +197,6 @@
 .my-week .all-classes .class {
 	display: flex;
 	flex-direction: column;
-	background: var(--div-bg-color);
-	border: var(--border-width) solid var(--div-bd-color);
 	padding: 2rem;
 	border-radius: 1.25rem;
 	overflow: hidden;
