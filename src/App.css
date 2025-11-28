@@ -22,21 +22,21 @@
 	--purple: var(--lpurple);
 	--pink: var(--lpink);
 
-	--lred: rgb(230, 0, 0);
-	--lorange: rgb(250, 80, 20);
-	--lyellow: rgb(250, 150, 0);
-	--lgreen: rgb(0, 180, 0);
-	--lturquoise: rgb(0, 190, 155);
-	--lblue: rgb(0, 30, 200);
-	--lpurple: rgb(100, 0, 230);
-	--lpink: rgb(230, 0, 100);
+	--lred: rgb(210, 0, 0);
+	--lorange: rgb(240, 70, 20);
+	--lyellow: rgb(240, 145, 0);
+	--lgreen: rgb(0, 170, 0);
+	--lturquoise: rgb(0, 170, 145);
+	--lblue: rgb(0, 30, 180);
+	--lpurple: rgb(95, 0, 220);
+	--lpink: rgb(220, 0, 100);
 
 	--dred: rgb(200, 0, 0);
 	--dorange: rgb(230, 65, 20);
 	--dyellow: rgb(230, 140, 0);
 	--dgreen: rgb(0, 160, 0);
-	--dturquoise: rgb(0, 170, 135);
-	--dblue: rgb(0, 30, 210);
+	--dturquoise: rgb(0, 160, 135);
+	--dblue: rgb(0, 25, 160);
 	--dpurple: rgb(90, 0, 210);
 	--dpink: rgb(210, 0, 95);
 
@@ -91,16 +91,15 @@
 	--body-bg-color: var(--gray1);
 
 	/* Div */ 
-	--div-bg-color: var(--gray1);
-	--div-hover-bg-color: var(--gray4);
-	--div-bd-color: var(--gray5);
+	--div-bg-color: var(--gray2);
+	--div-bd-color: var(--gray6);
 
 	/* Botões */
 	--button-bg-primary-color: var(--primary-emphasis);
 	--button-bd-primary-color: var(--light);
 
-	--button-bg-secondary-color: var(--gray1);
-	--button-bd-secondary-color: var(--gray5);
+	--button-bg-secondary-color: var(--gray2);
+	--button-bd-secondary-color: var(--gray6);
 
 	--highlight-button-bg-color: var(--secondary-emphasis);
 
@@ -110,7 +109,7 @@
 	--header-height: 2.75rem;
 	--header-spaces: 0.5rem;
 	--header-bg-color: var(--primary-emphasis);
-	--header-button-bg-color: var(--gray1);
+	--header-button-bg-color: var(--gray2);
 	--header-button-bd-color: var(--gray4);
 
 	/* Section */
@@ -130,13 +129,13 @@
 	--default-secondary-fc: rgb(130, 130, 130);
 	
 	/* Box Shadow */
-	--light-bs: 0 0 0.5rem rgba(0, 0, 0, 0.125);
-	--default-bs: 0 0 1rem rgba(0, 0, 0, 0.25);
+	--light-bs: 0 0 0.5rem rgba(0, 0, 0, 0.15);
+	--default-bs: 0 0 1rem rgba(0, 0, 0, 0.3);
 
 	/* Border */
 	--hr-color: var(--gray5);
-	--border-width: 1px;
-	--separator-width: 2px;
+	--border-width: 0.0625rem;
+	--separator-width: 0.125rem;
 
 	/* Transições */
 	--default-color-transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out, color 0.3s ease-in-out;
